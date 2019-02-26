@@ -48,7 +48,8 @@ module.exports = function (ctx) {
         'QCheckbox',
         'QInput',
         'QSeparator',
-        'QImg'
+        'QImg',
+        'QPageSticky'
       ],
 
       directives: [

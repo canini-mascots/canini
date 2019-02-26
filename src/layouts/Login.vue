@@ -1,9 +1,8 @@
 <template>
   <div class="login fullscreen row justify-center items-center bg-primary">
     <q-card class="q-pa-md">
-      <q-card-section>
-        <div class="text-h2 text-center red">Canini</div>
-        <div class="text-subtitle text-center">Mascots</div>
+      <q-card-section class="q-mb-lg">
+        <img src="statics/logo.svg" alt="Canini" />
       </q-card-section>
       <q-card-section class="q-gutter-md">
         <q-input v-model="email" :label="$t('email')" />

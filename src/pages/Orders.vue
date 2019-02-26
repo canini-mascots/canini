@@ -5,7 +5,7 @@
       v-for="order in orders"
       :key="order.id">
       <q-card-section>
-        <div class="text-h6">{{order.date}}</div>
+        <div class="text-h6">{{order.date | date}}</div>
       </q-card-section>
       <q-card-section>
         {{order.total}} €
@@ -37,6 +37,22 @@ export default {
     }
 
     return { orders }
+  },
+  filters: {
+    date: function (value) {
+      if (!value) return value
+      let monthNames = [
+        'January', 'February', 'March',
+        'April', 'May', 'June', 'July',
+        'August', 'September', 'October',
+        'November', 'December'
+      ]
+      return value.getDate() +
+        ' of ' +
+        monthNames[value.getMonth()] +
+        ' of ' +
+        value.getFullYear()
+    }
   }
 }
 </script>

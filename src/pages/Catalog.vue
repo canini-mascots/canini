@@ -56,12 +56,9 @@
 <script>
 export default {
   name: 'Catalog',
-  filters: {
-    currency: i => i ? i.toFixed(2) + '€' : i
-  },
   data () {
     let items = []
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 50; i++) {
       items.push({
         id: i,
         image: 'http://www.gerbeauxdogbakery.com/v/vspfiles/photos/GDBLCK-2.jpg',
@@ -111,6 +108,9 @@ export default {
         }
       ]
     }
+  },
+  filters: {
+    currency: i => i ? i.toFixed(2) + '€' : i
   }
 }
 </script>

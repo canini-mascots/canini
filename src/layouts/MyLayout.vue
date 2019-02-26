@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh LpR fFf" class="bg-grey-3">
+  <q-layout view="lHh LpR fFf" class="bg-grey-3">
     <q-header elevated>
       <q-toolbar>
         <q-btn
@@ -12,8 +12,15 @@
           <q-icon name="menu" />
         </q-btn>
         <q-toolbar-title>
-          Canini Mascots
-        </q-toolbar-title>
+          {{$t($router.currentRoute.name)}}
+        </q-toolbar-title><!--
+        <q-input dark dense standout v-model="search">
+          <template v-slot:append>
+            <q-icon v-if="search === ''" name="search" />
+            <q-icon v-else name="clear" class="cursor-pointer" @click="search = ''" />
+          </template>
+        </q-input>
+        <q-btn flat class="q-ml-md" :label="$t('login')" :to="{name: 'login'}" />-->
       </q-toolbar>
     </q-header>
     <q-drawer
@@ -21,8 +28,16 @@
       content-class="bg-grey-2"
       elevated
     >
-      <q-list>
-        <q-item-label header>Menu</q-item-label>
+      <div class="q-pa-md shadow-1 q-mb-md bg-grey-9" style="color: white;">
+        <div class="text-h3">
+          Canini
+        </div>
+        <div class="row items-center full-width justify-between">
+          <span class="text-subtitle1">Visitor</span>
+          <q-btn flat round dense icon="exit_to_app" :to="{name: 'login'}" :title="$t('login')" />
+        </div>
+      </div>
+      <q-list class="text-body1">
         <q-item clickable :to="{name: 'home'}">
           <q-item-section>
             <q-item-label>{{$t('home')}}</q-item-label>
@@ -68,7 +83,8 @@ export default {
   name: 'MyLayout',
   data () {
     return {
-      leftDrawerOpen: this.$q.platform.is.desktop
+      leftDrawerOpen: this.$q.platform.is.desktop,
+      search: ''
     }
   },
   methods: {

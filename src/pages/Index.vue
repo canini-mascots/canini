@@ -2,16 +2,16 @@
   <div>
     <q-carousel
       v-model="slide"
-      transition-prev="scale"
-      transition-next="scale"
-      swipeable
+      transition-prev="slide-right"
+      transition-next="slide-left"
       animated
-      control-color="white"
+      swipeable
+      control-color="black"
       navigation
       padding
       arrows
       height="500px"
-      class="bg-black text-white shadow-1"
+      class="bg-grey-10 shadow-1"
     >
       <q-carousel-slide
         v-for="slide in slides"
@@ -36,48 +36,58 @@
         </q-img>
       </q-card>
     </div>
+    <q-page-sticky position="bottom-right" :offset="[18, 18]">
+      <q-btn
+        fab
+        icon="shopping_basket"
+        color="accent"
+        :to="{name: 'catalog'}"
+        :title="$t('startOrder')"
+      />
+    </q-page-sticky>
   </div>
 </template>
 
 <style lang="stylus" scoped>
   .my-card
-    width 100%
-    max-width 600px
+    width 520px
+    max-width 100%
 </style>
 
 <script>
 export default {
   name: 'PageIndex',
   data () {
-    let offers = []
-    for (let i = 0; i < 4; i++) {
-      offers.push({
-        id: i,
-        image: 'https://petsandmoneysummit.com/sites/default/files/styles/cover_image_full/public/event_cover_images/pets_and_money_hero_image_-_minus_guinea.png?itok=JA-jklht',
-        description: 'tooManyOffers'
-      })
-    }
-
     return {
-      offers,
       slide: 'style',
       slides: [
         {
-          image: 'https://avada.theme-fusion.com/veterinarian/wp-content/uploads/sites/80/2016/11/pets_big.png',
+          image: 'statics/carousel/recommended.png',
           text: 'recommendedByPets',
           icon: 'style'
         }, {
-          image: 'https://www.thepostoakhotel.com/img/gallery/pets-lg.jpg',
+          image: 'statics/carousel/party.png',
           text: 'concentrationGames',
           icon: 'live_tv'
+        }
+      ],
+      offers: [
+        {
+          id: 1,
+          image: 'statics/resources/kit.png',
+          description: 'receiveWithKit'
         }, {
-          image: 'https://az760333.vo.msecnd.net/-/media/property/skamania-lodge/resort-overview/pet-friendly-skamania-pet-policies-crpd1440x600.jpg?ts=19bf6d5c-89e4-4236-94a9-b51c33d9c0ed',
-          text: 'receiveWithKit',
-          icon: 'layers'
+          id: 2,
+          image: 'statics/resources/offers.png',
+          description: 'tooManyOffers'
         }, {
-          image: 'https://www.condorferries.co.uk/media/2455/taking-your-pet-5.jpg',
-          text: 'recommendedByPets',
-          icon: 'terrain'
+          id: 3,
+          image: 'statics/resources/concentration.png',
+          description: 'concentrationGames'
+        }, {
+          id: 4,
+          image: 'statics/resources/veggie.png',
+          description: 'veggieMeat'
         }
       ]
     }
