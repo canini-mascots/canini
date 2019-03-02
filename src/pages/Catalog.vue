@@ -58,7 +58,7 @@ export default {
   name: 'Catalog',
   data () {
     let items = []
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 16; i++) {
       items.push({
         id: i,
         image: 'statics/lucky-cookie.png',

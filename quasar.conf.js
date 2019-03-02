@@ -101,8 +101,8 @@ module.exports = function (ctx) {
       // workboxPluginMode: 'InjectManifest',
       // workboxOptions: {},
       manifest: {
-        // name: 'Quasar App',
-        // short_name: 'Quasar-PWA',
+        name: 'Canini',
+        short_name: 'Canini',
         // description: 'Best PWA App in town!',
         display: 'standalone',
         orientation: 'portrait',
