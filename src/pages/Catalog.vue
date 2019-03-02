@@ -61,7 +61,7 @@ export default {
     for (let i = 0; i < 50; i++) {
       items.push({
         id: i,
-        image: 'http://www.gerbeauxdogbakery.com/v/vspfiles/photos/GDBLCK-2.jpg',
+        image: 'statics/lucky-cookie.png',
         name: 'Galletita de la suerte',
         stars: i % 5,
         price: 1.32 * i % 5 + 1,

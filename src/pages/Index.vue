@@ -67,7 +67,7 @@ export default {
           icon: 'style'
         }, {
           image: 'statics/carousel/party.png',
-          text: 'concentrationGames',
+          text: 'joinParty',
           icon: 'live_tv'
         }
       ],

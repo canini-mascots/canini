@@ -29,11 +29,9 @@
       elevated
     >
       <div class="q-pa-md shadow-1 q-mb-md bg-grey-9" style="color: white;">
-        <div class="text-h3">
-          Canini
-        </div>
+        <img src="statics/canini-dark.svg" alt="Canini" class="logo q-mb-md"/>
         <div class="row items-center full-width justify-between">
-          <span class="text-subtitle1">Visitor</span>
+          <span class="text-subtitle1">{{$t('visitor')}}</span>
           <q-btn flat round dense icon="exit_to_app" :to="{name: 'login'}" :title="$t('login')" />
         </div>
       </div>
@@ -93,5 +91,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.logo {
+  height: 70px;
+  display: block;
+}
 </style>

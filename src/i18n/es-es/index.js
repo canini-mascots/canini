@@ -7,6 +7,7 @@ export default {
 
   // Layout
   login: 'Iniciar sesión',
+  visitor: 'Visitante',
 
   // Menu
   home: 'Inicio',
@@ -19,6 +20,7 @@ export default {
   // Home
   startOrder: 'Empezar pedido',
   recommendedByPets: '¡Recomendado por 9 de cada 10 caninos!',
+  joinParty: '¡Únete a la fiesta Canini!',
   tooManyOffers: '¡Tantas ofertas que no sabes dónde mirar!',
   receiveWithKit: '¡Recibe con tu kit mensual mensajes y textos personalizados!',
   concentrationGames: 'Juegos de concentración desde 3,90€',
