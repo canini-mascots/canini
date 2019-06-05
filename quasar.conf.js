@@ -44,6 +44,7 @@ module.exports = function (ctx) {
         'QCard',
         'QCardSection',
         'QCardActions',
+        'QSpinner',
         'QRating',
         'QCheckbox',
         'QInput',

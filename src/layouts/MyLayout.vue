@@ -19,8 +19,8 @@
             <q-icon v-if="search === ''" name="search" />
             <q-icon v-else name="clear" class="cursor-pointer" @click="search = ''" />
           </template>
-        </q-input>
-        <q-btn flat class="q-ml-md" :label="$t('login')" :to="{name: 'login'}" />-->
+        </q-input>-->
+        <q-btn flat class="q-ml-md" :label="$t('login')" :to="{name: 'login'}" />
       </q-toolbar>
     </q-header>
     <q-drawer
@@ -81,7 +81,7 @@ export default {
   name: 'MyLayout',
   data () {
     return {
-      leftDrawerOpen: this.$q.platform.is.desktop,
+      leftDrawerOpen: false, // this.$q.platform.is.desktop
       search: ''
     }
   },

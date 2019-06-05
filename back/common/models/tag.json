@@ -1,0 +1,43 @@
+{
+    "name": "Tag",
+    "base": "PersistedModel",
+    "options": {
+        "mysql": {
+          "table": "tag"
+        }
+    },
+    "properties": {
+      "id": {
+        "type": "Number",
+        "id": true,
+        "description": "Identifier"
+      },
+      "name": {
+        "type": "String",
+        "required": true
+      },
+      "isFree": {
+        "type": "Boolean"
+      },
+      "sourceTable": {
+        "type": "String"
+      },
+      "unit": {
+        "type": "String"
+      },
+      "isQuantitative": {
+        "type": "Boolean",
+        "mysql": {
+          "columnName": "isQuantitatif"
+        }
+      }
+    },
+    "acls": [
+      {
+        "accessType": "READ",
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "ALLOW"
+      }
+    ]
+  }

@@ -14,7 +14,7 @@ const routes = [
         component: () => import('pages/Index.vue')
       }, {
         name: 'catalog',
-        path: '/catalog/:name?',
+        path: '/catalog/:type?',
         component: () => import('pages/Catalog.vue')
       }, {
         name: 'orders',
