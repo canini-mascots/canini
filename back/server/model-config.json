@@ -49,5 +49,17 @@
   },
   "Tag": {
       "dataSource": "vn"
+  },
+  "Customer": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Order": {
+    "dataSource": "db",
+    "public": true
+  },
+  "ItemOrder": {
+    "dataSource": "db",
+    "public": true    
   }
 }

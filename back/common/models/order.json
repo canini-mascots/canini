@@ -1,0 +1,34 @@
+{
+  "name": "Order",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "mysql": {
+        "table": "order"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "Number",
+      "id": true,
+      "description": "Identifier"
+    },
+    "value": {
+        "type": "Number"
+    },
+    "date": {
+        "type": "Date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "items": {
+      "type": "hasMany",
+      "model": "Item",
+      "foreignKey": "orderId",
+      "through": "ItemOrder"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -31,8 +31,26 @@
       <div class="q-pa-md shadow-1 q-mb-md bg-grey-9" style="color: white;">
         <img src="statics/canini-dark.svg" alt="Canini" class="logo q-mb-md"/>
         <div class="row items-center full-width justify-between">
-          <span class="text-subtitle1">{{$t('visitor')}}</span>
-          <q-btn flat round dense icon="exit_to_app" :to="{name: 'login'}" :title="$t('login')" />
+          <span class="text-subtitle1">{{checkUser()}}</span>
+          <q-btn
+            flat
+            round
+            dense
+            icon="exit_to_app"
+            :to="{name: 'login'}"
+            :title="$t('login')"
+            v-if="!this.$store.state.customer.email"
+            />
+          <q-btn
+            flat
+            round
+            dense
+            icon="exit_to_app"
+            :to="{name: 'login'}"
+            :title="$t('logout')"
+            @click="logout"
+            v-else
+            />
         </div>
       </div>
       <q-list class="text-body1">
@@ -61,11 +79,6 @@
             <q-item-label>{{$t('about')}}</q-item-label>
           </q-item-section>
         </q-item>
-        <q-item clickable :to="{name: 'register'}">
-          <q-item-section>
-            <q-item-label>{{$t('register')}}</q-item-label>
-          </q-item-section>
-        </q-item>
       </q-list>
     </q-drawer>
     <q-page-container>
@@ -76,7 +89,7 @@
 
 <script>
 import { openURL } from 'quasar'
-
+import { mapMutations } from 'vuex'
 export default {
   name: 'MyLayout',
   data () {
@@ -86,7 +99,19 @@ export default {
     }
   },
   methods: {
-    openURL
+    openURL,
+    checkUser: function () {
+      if (this.$store.state.customer.email) {
+        return this.$store.state.customer.email
+      } else {
+        return this.$t('visitor')
+      }
+    },
+    logout: function () {
+      this.setEmail()
+      this.setToken()
+    },
+    ...mapMutations('customer', ['setToken', 'setEmail'])
   }
 }
 </script>

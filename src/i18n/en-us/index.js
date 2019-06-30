@@ -8,6 +8,7 @@ export default {
   // Layout
   login: 'Login',
   visitor: 'Visitor',
+  logout: 'Logout',
 
   // Menu
   home: 'Home',

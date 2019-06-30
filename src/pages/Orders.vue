@@ -1,57 +1,40 @@
 <template>
   <div class="q-pa-md column items-center q-gutter-md">
-    <q-card
-      class="my-card"
-      v-for="order in orders"
-      :key="order.id">
-      <q-card-section>
-        <div class="text-h6">{{order.date | date}}</div>
-      </q-card-section>
-      <q-card-section>
-        {{order.total}} €
-      </q-card-section>
-      <q-card-actions>
-        <q-btn flat>{{$t('viewDetails')}}</q-btn>
-      </q-card-actions>
-    </q-card>
+    <order-item
+      :order = "singleOrder"
+      v-for="singleOrder in orders"
+      :key="singleOrder.id" >
+    </order-item>
   </div>
 </template>
 
-<style lang="stylus" scoped>
-  .my-card
-    width 100%
-    max-width 600px
+<style>
 </style>
 
 <script>
+import orderItem from '../components/order'
 export default {
   name: 'Orders',
-  data () {
-    let orders = []
-    for (let i = 0; i < 4; i++) {
-      orders.push({
-        id: i,
-        date: new Date(),
-        total: 5 + 1.2 * i
-      })
-    }
-
-    return { orders }
+  components: {
+    orderItem
   },
-  filters: {
-    date: function (value) {
-      if (!value) return value
-      let monthNames = [
-        'January', 'February', 'March',
-        'April', 'May', 'June', 'July',
-        'August', 'September', 'October',
-        'November', 'December'
-      ]
-      return value.getDate() +
-        ' of ' +
-        monthNames[value.getMonth()] +
-        ' of ' +
-        value.getFullYear()
+  data () {
+    return {
+      orders: this.getOrders()
+    }
+  },
+  methods: {
+    getOrders: function () {
+      let orders = []
+      let params = { filter: { where: { customerId: this.$store.state.customer.id } } }
+      this.$axios.get('Orders' + '?access_token=' + this.$store.state.customer.token, { params })
+        .then(res => (
+          Object.keys(res.data).map(function (objectKey, index) {
+            var value = res.data[objectKey]
+            orders.push(value)
+          })
+        ))
+      return orders
     }
   }
 }
