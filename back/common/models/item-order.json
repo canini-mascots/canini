@@ -19,6 +19,10 @@
         "itemId": {
             "type": "Number",
             "required": true
+        },
+        "value": {
+            "type": "Number",
+            "required": true
         }
     },
     "relations": {

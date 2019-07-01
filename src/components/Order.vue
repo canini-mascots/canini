@@ -1,25 +1,41 @@
 <template>
   <q-card class="my-card">
       <q-card-section>
-        <div class="text-h6">{{order.date}}</div>
+        <span class="text-h6">ID: {{order.id}}</span>
       </q-card-section>
       <q-card-section>
-        {{order.total}} €
+        <span>{{order.date}}</span>
+      </q-card-section>
+      <q-card-section>
+        {{order.value| currency}}
       </q-card-section>
       <q-card-actions>
-        <q-btn flat>{{$t('viewDetails')}}</q-btn>
+        <q-btn flat @click="showDetails">{{$t('viewDetails')}}</q-btn>
       </q-card-actions>
+      <q-card-section>
+        <order-detail
+        :hidden="shwDts"
+        :itemOrder = "singleItemOrder"
+        v-for="singleItemOrder in itemsOrder"
+        :key="singleItemOrder.id" >
+        </order-detail>
+      </q-card-section>
     </q-card>
 </template>
 
 <script>
+import orderDetail from '../components/OrderDetail'
 export default {
   name: 'Order',
   data () {
     return {
       itemsOrder: [],
-      items: []
+      items: [],
+      shwDts: true
     }
+  },
+  components: {
+    orderDetail
   },
   props: {
     order: {
@@ -31,6 +47,9 @@ export default {
     this.getItemOrders(this.order.id)
   },
   methods: {
+    showDetails: function () {
+      this.shwDts = !this.shwDts
+    },
     getItemOrders: function (id) {
       let vue = this
       let params = { filter: { where: { orderId: id } } }
@@ -53,18 +72,10 @@ export default {
             vue.items.push(value)
           })
         ))
-    },
-    getInbound: function (id) {
-      let vue = this
-      let params = { filter: { where: { id: id } } }
-      this.$axios.get('Items', { params })
-        .then(res => (
-          Object.keys(res.data).map(function (objectKey, index) {
-            var value = res.data[objectKey]
-            vue.items.push(value)
-          })
-        ))
     }
+  },
+  filters: {
+    currency: i => i ? i.toFixed(2) + '€' : i
   }
 }
 </script>

@@ -12,7 +12,7 @@
 </style>
 
 <script>
-import orderItem from '../components/order'
+import orderItem from '../components/Order'
 export default {
   name: 'Orders',
   components: {
