@@ -1,0 +1,37 @@
+{
+    "name": "Inbound",
+	"base": "PersistedModel",
+    "options": {
+        "mysql": {
+          "table": "inbound"
+        }
+    },
+    "properties": {
+        "id": {
+            "type": "Number",
+            "id": true,
+            "description": "Identifier"
+        },
+        "tableName": {
+            "type": "string"
+        },
+        "tableId": {
+            "type": "Number"
+        },
+        "itemFk": {
+            "type": "Number"
+        },
+        "dated": {
+            "type": "Date"
+        }
+        ,
+        "expired": {
+            "type": "Date"
+        },
+        "available": {
+            "type": "Number"
+        }
+    },
+    "relations": {
+    }
+  }

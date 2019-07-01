@@ -50,6 +50,12 @@
   "Tag": {
       "dataSource": "vn"
   },
+  "Buy": {
+    "dataSource": "vn"
+  },
+  "Inbound": {
+    "dataSource": "stock"
+  },
   "Customer": {
     "dataSource": "db",
     "public": true

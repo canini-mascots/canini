@@ -53,6 +53,17 @@ export default {
             vue.items.push(value)
           })
         ))
+    },
+    getInbound: function (id) {
+      let vue = this
+      let params = { filter: { where: { id: id } } }
+      this.$axios.get('Items', { params })
+        .then(res => (
+          Object.keys(res.data).map(function (objectKey, index) {
+            var value = res.data[objectKey]
+            vue.items.push(value)
+          })
+        ))
     }
   }
 }
