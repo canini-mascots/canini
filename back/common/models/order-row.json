@@ -1,0 +1,49 @@
+{
+    "name": "OrderRow",
+    "base": "PersistedModel",
+    "options": {
+        "mysql": {
+            "table": "orderRow"
+        }
+    },
+    "properties": {
+        "id": {
+            "type": "Number",
+            "id": true,
+            "description": "Identifier"
+        },
+        "orderId": {
+            "type": "Number",
+            "required": true
+        },
+        "buyId": {
+            "type": "Number",
+            "required": true
+        },
+        "price": {
+            "type": "Number",
+            "required": true
+        },
+        "quantity": {
+            "type": "Number",
+            "required": true
+        },
+        "concept": {
+            "type": "String",
+            "required": true
+        }
+    },
+    "relations": {
+        "order": {
+            "type": "belongsTo",
+            "model": "Order",
+            "foreignKey": "orderId"
+        },
+        "Buy": {
+            "type": "belongsTo",
+            "model": "Buy",
+            "foreignKey": "buyId"
+        }
+    },
+    "acls": []
+}
