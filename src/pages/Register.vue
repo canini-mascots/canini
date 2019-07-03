@@ -42,7 +42,7 @@
 <style lang="stylus" scoped></style>
 
 <script>
-import { showNotif, showError } from 'assets/js/notification.js'
+import { showNotif } from 'assets/js/notification.js'
 export default {
   name: 'Register',
   data () {
@@ -66,9 +66,6 @@ export default {
         response => {
           showNotif('top', 'You have successfully registered.', 'positive', this.$q)
           this.$router.push('/home')
-        },
-        error => {
-          showError(error.response.data.error, this.$q)
         }
       )
     }

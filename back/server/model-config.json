@@ -64,7 +64,7 @@
     "dataSource": "db",
     "public": true
   },
-  "ItemOrder": {
+  "OrderRow": {
     "dataSource": "db",
     "public": true    
   }

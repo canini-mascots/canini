@@ -13,7 +13,7 @@
       "id": true,
       "description": "Identifier"
     },
-    "value": {
+    "price": {
         "type": "Number"
     },
     "date": {
@@ -22,11 +22,11 @@
   },
   "validations": [],
   "relations": {
-    "items": {
+    "buys": {
       "type": "hasMany",
-      "model": "Item",
+      "model": "Buy",
       "foreignKey": "orderId",
-      "through": "ItemOrder"
+      "through": "OrderRow"
     }
   },
   "acls": [],
