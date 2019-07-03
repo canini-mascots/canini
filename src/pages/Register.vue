@@ -19,7 +19,7 @@
             />
           </template>
         </q-input>
-        <q-input v-model="repeatPassword" :label="$t('repeatPassword')" :type="showRpPwd ? 'password' : 'text'">
+        <q-input v-model="repeatPassword" :label="$t('repeatPassword')" :type="showRpPwd ? 'password' : 'text'" >
           <template v-slot:append>
             <q-icon
               :name="showRpPwd ? 'visibility_off' : 'visibility'"
