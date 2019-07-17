@@ -21,3 +21,19 @@ export function showError (error, q) {
     showNotif('top', error.message, 'negative', q)
   }
 }
+export function showInputError (error, q) {
+  let errors = []
+  if (error.details) {
+    let messages = error.details.messages
+    Object.keys(messages).map(function (objectKey, index) {
+      var value = messages[objectKey]
+      value.forEach(element => {
+        errors[objectKey] = element
+      })
+    })
+    return errors
+  } else {
+    showNotif('top', error.message, 'negative', q)
+    return errors
+  }
+}

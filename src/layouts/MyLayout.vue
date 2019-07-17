@@ -29,7 +29,7 @@
       elevated
     >
       <div class="q-pa-md shadow-1 q-mb-md bg-grey-9" style="color: white;">
-        <img src="statics/canini-dark.svg" alt="Canini" class="logo q-mb-md"/>
+        <img src="statics/logo.svg" alt="Canini" class="logo q-mb-md"/>
         <div class="row items-center full-width justify-between">
           <span class="text-subtitle1">{{checkUser()}}</span>
           <q-btn
@@ -118,7 +118,7 @@ export default {
 
 <style scoped>
 .logo {
-  height: 70px;
+  height: 120px;
   display: block;
 }
 </style>

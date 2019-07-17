@@ -46,6 +46,10 @@ export default {
   registerAsNew: 'Registrarse como nuevo usuario',
   notYetUser: 'You are not yet a user, register now and start enjoying everything that canini offers you.',
   repeatPassword: 'Repeat password',
+  repeatPasswordError: "Passwords don't mach",
+  passwordRequeriments: 'Password must contain 1 number, 1 uppercase, 1 lowercase and a minimum of 6 letters.',
   receiveOffers: 'Receive offers and promotions by e-mail',
-  userRegistered: 'User registered successfully'
+  userRegistered: 'User registered successfully',
+  invalidEmail: 'Invalid Email',
+  notUniqueEmail: 'Email not unique'
 }

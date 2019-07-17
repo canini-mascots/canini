@@ -46,6 +46,10 @@ export default {
   registerAsNew: 'Registrarse como nuevo usuario',
   notYetUser: '¿Todavía no eres usuari@?, registrate y empieza a disfrutar de todo lo que Canini puede ofrecerte.',
   repeatPassword: 'Repetir contraseña',
+  repeatPasswordError: 'Las contraseñas no coinciden',
+  passwordRequeriments: 'La contraseña debe tener 1 número, 1 mayuscula y un mínimo de 6 carácteres',
   receiveOffers: 'Recibir ofertas y promociones por correo electrónico',
-  userRegistered: 'Usuario registrado correctamente'
+  userRegistered: 'Usuario registrado correctamente',
+  invalidEmail: 'Email no válido',
+  notUniqueEmail: 'Email no único'
 }

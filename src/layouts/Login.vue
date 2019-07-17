@@ -2,11 +2,11 @@
   <div class="login fullscreen row justify-center items-center bg-primary">
     <q-card class="q-pa-md">
       <q-card-section class="q-mb-lg">
-        <img src="statics/canini.svg" alt="Canini" />
+        <img src="statics/logo.svg" alt="Canini" />
       </q-card-section>
       <q-card-section class="q-gutter-md">
-        <q-input v-model="email" :label="$t('email')" />
-        <q-input v-model="password" :label="$t('password')" :type="showPwd ? 'password' : 'text'">
+        <q-input outlined v-model="email" :label="$t('email')" />
+        <q-input outlined v-model="password" :label="$t('password')" :type="showPwd ? 'password' : 'text'">
           <template v-slot:append>
             <q-icon
               :name="showPwd ? 'visibility_off' : 'visibility'"
@@ -43,7 +43,6 @@
 
 <script>
 import { mapMutations } from 'vuex'
-import { showNotif, showError } from 'assets/js/notification.js'
 export default {
   name: 'Login',
   data () {
@@ -51,7 +50,11 @@ export default {
       email: '',
       password: '',
       remember: false,
-      showPwd: true
+      showPwd: true,
+      emailError: false,
+      emailMessage: '',
+      pwdError: false,
+      pwdMessage: ''
     }
   },
   methods: {
@@ -65,9 +68,6 @@ export default {
           this.setToken(response.data.id)
           this.setId(response.data.userId)
           this.getUser(response.data.userId)
-        },
-        error => {
-          showError(error.response.data.error, this.$q)
         }
       )
     },
@@ -75,11 +75,7 @@ export default {
       this.$axios.get('customers/' + id + '?access_token=' + this.$store.state.customer.token).then(
         response => {
           this.setEmail(response.data.email)
-          showNotif('top', 'You have successfully login.', 'positive', this.$q)
           this.$router.push('/home')
-        },
-        error => {
-          showError(error.response.data.error, this.$q)
         }
       )
     },
