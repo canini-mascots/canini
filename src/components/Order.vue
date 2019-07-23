@@ -1,13 +1,13 @@
 <template>
   <q-card class="my-card">
       <q-card-section>
-        <span class="text-h6">ID: {{order.id}}</span>
+        <div class="text-h6">{{$t('orderNumber')}}: {{ order.id}}</div>
       </q-card-section>
       <q-card-section>
-        <span>{{order.date}}</span>
+        <div class="text-subtitle1">{{$t('orderPlaced')}}: {{ getDate(order.date)}}</div>
       </q-card-section>
       <q-card-section>
-        {{order.value| currency}}
+        <span class="text-subtitle1">{{$t('total')}}: {{ order.price| currency}}</span>
       </q-card-section>
       <q-card-actions>
         <q-btn flat @click="showDetails">{{$t('viewDetails')}}</q-btn>
@@ -15,7 +15,7 @@
       <q-card-section>
         <order-detail
         :hidden="shwDts"
-        :itemOrder = "singleItemOrder"
+        :orderRow = "singleItemOrder"
         v-for="singleItemOrder in itemsOrder"
         :key="singleItemOrder.id" >
         </order-detail>
@@ -53,13 +53,15 @@ export default {
     getItemOrders: function (id) {
       let vue = this
       let params = { filter: { where: { orderId: id } } }
-      this.$axios.get('ItemOrders', { params })
+      this.$axios.get('OrderRows', { params })
         .then(res => (
           Object.keys(res.data).map(function (objectKey, index) {
             var value = res.data[objectKey]
             vue.itemsOrder.push(value)
-            vue.getItems(value.itemId)
           })
+        ),
+        err => (
+          console.log(err)
         ))
     },
     getItems: function (id) {
@@ -72,6 +74,18 @@ export default {
             vue.items.push(value)
           })
         ))
+    },
+    getDate: function (date) {
+      var i = new Date(date)
+      var mm = i.getMonth()
+      var dd = i.getDate()
+      if (mm < 10) {
+        mm = '0' + mm
+      }
+      if (dd < 10) {
+        dd = '0' + dd
+      }
+      return dd + '/' + mm + '/' + i.getFullYear()
     }
   },
   filters: {

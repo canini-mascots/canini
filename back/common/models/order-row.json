@@ -10,8 +10,8 @@
         "id": {
             "type": "Number",
             "id": true,
-            "description": "Identifier"
-        },
+            "generated": true
+          },
         "orderId": {
             "type": "Number",
             "required": true

@@ -11,7 +11,7 @@
     "id": {
       "type": "Number",
       "id": true,
-      "description": "Identifier"
+      "generated": true
     },
     "price": {
         "type": "Number"

@@ -20,13 +20,13 @@
         <q-checkbox v-model="remember" :label="$t('remember')" />
       </q-card-section>
       <q-card-actions class="justify-center">
-        <q-btn flat :label="$t('enter')" @click="onLogin"/>
+        <q-btn outline color="primary" :label="$t('enter')" @click="onLogin" :disable="checkInputs()"/>
       </q-card-actions>
       <q-card-section class="q-gutter-md">
         <q-item-label id="notYetUser">{{$t('notYetUser')}}</q-item-label>
       </q-card-section>
       <q-card-actions class="justify-center">
-        <q-btn flat :label="$t('registerAsNew')" :to="{name: 'register'}" />
+        <q-btn outline color="primary"  :label="$t('registerAsNew')" :to="{name: 'register'}" />
       </q-card-actions>
     </q-card>
   </div>
@@ -79,7 +79,13 @@ export default {
         }
       )
     },
-    ...mapMutations('customer', ['setToken', 'setEmail', 'setId'])
+    ...mapMutations('customer', ['setToken', 'setEmail', 'setId']),
+    checkInputs () {
+      if (this.email !== '' && this.password !== '') {
+        return false
+      }
+      return true
+    }
   }
 }
 </script>

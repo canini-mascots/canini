@@ -4,6 +4,7 @@ export default {
   email: 'Correo electrónico',
   password: 'Contraseña',
   remember: 'No cerrar sesión',
+  wrongUserPass: 'Usuario o contraseña incorrectos',
 
   // Layout
   login: 'Iniciar sesión',
@@ -33,9 +34,11 @@ export default {
   categories: 'Categorias',
 
   // Orders
+  orderNumber: 'Número del pedido',
   viewDetails: 'Ver detalles',
-  of: 'of',
-
+  of: 'de',
+  orderPlaced: 'Pedido realizado',
+  total: 'Total',
   // Conditions
   conditionsDesc: 'Te aseguramos que el pedido llegara a tu casa/tienda en menos de 24/48 horas (Dependiendo de en que zona te encuentres).',
 

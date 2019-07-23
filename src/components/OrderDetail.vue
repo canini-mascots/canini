@@ -1,10 +1,11 @@
 <template>
   <q-card class="my-card">
+      <img :src="imageUrl + item.image">
       <q-card-section>
-        <span class="text-h6">Item id: {{this.itemOrder.itemId}}</span>
+        <span class="text-h6">Item id: {{this.orderRow.id}}</span>
       </q-card-section>
       <q-card-section>
-        <span class="text-h6">Value: {{this.itemOrder.value| currency}}</span>
+        <span class="text-h6">{{$t('total')}}: {{this.orderRow.price| currency}}</span>
       </q-card-section>
     </q-card>
 </template>
@@ -14,27 +15,31 @@ export default {
   name: 'OrderDetail',
   data () {
     return {
-      item: null
+      item: null,
+      imageUrl: 'https://verdnatura.es/vn-image-data/catalog/200x200/'
     }
   },
   props: {
-    itemOrder: {
+    orderRow: {
       required: true,
       type: Object
     }
   },
   mounted: function () {
-    this.getItem(this.itemOrder.id)
+    this.getBuy(this.orderRow.buyId)
   },
   methods: {
-    getItem: function (id) {
-      let vue = this
+    getBuy: function (id) {
+      // let vue = this
+      this.$axios.get('Buys/' + id)
+        .then(res => (
+          this.getItem(res.data.itemFk)
+        ))
+    },
+    getItem (id) {
       this.$axios.get('Items/' + id)
         .then(res => (
-          Object.keys(res.data).map(function (objectKey, index) {
-            var value = res.data[objectKey]
-            vue.item = value
-          })
+          this.item = res.data
         ))
     }
   },
@@ -45,4 +50,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  .my-card
+    max-width 250px
 </style>

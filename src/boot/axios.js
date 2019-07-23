@@ -5,12 +5,16 @@ export default async ({ app, Vue }) => {
   axios.defaults.baseURL = 'http://localhost:3000/api/'
 
   axios.interceptors.request.use(function (config) {
-    config.headers.Authorization = app.store.state.customer.token
+    if (app.store.state.customer.token !== '') {
+      config.headers.Authorization = app.store.state.customer.token
+    }
     return config
   })
 
   window.onunhandledrejection = function (event) {
-    showError(event.reason.response.data.error, Vue.prototype.$q)
-    event.preventDefault()
+    if (event.reason.response.data.error) {
+      showError(event.reason.response.data.error, Vue.prototype.$q)
+      event.preventDefault()
+    }
   }
 }

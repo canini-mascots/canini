@@ -4,6 +4,7 @@ export default {
   email: 'E-Mail',
   password: 'Password',
   remember: 'Don not close session',
+  wrongUserPass: 'Wrong username or password',
 
   // Layout
   login: 'Login',
@@ -33,8 +34,11 @@ export default {
   categories: 'Categories',
 
   // Orders
-  viewDetails: 'Ver detalles',
-  of: 'de',
+  orderNumber: 'Order number',
+  viewDetails: 'See details',
+  of: 'of',
+  orderPlaced: 'Order placed',
+  total: 'Total',
 
   // Conditions
   conditionsDesc: 'The order will arrive to your home in 24/48 hours depending on which area you are.',
