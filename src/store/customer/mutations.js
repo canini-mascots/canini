@@ -7,3 +7,8 @@ export function setEmail (state, email) {
 export function setId (state, id) {
   state.id = id
 }
+export function setCustomer (state, id, token, email) {
+  state.id = id
+  state.token = token
+  state.email = email
+}

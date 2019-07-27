@@ -1,5 +1,5 @@
 <template>
-  <div class="login fullscreen row justify-center items-center bg-primary">
+  <q-layout class="login fullscreen row justify-center items-center bg-primary">
     <q-card class="q-pa-md">
       <q-card-section class="q-mb-lg">
         <img src="statics/logo.svg" alt="Canini" />
@@ -29,7 +29,10 @@
         <q-btn outline color="primary"  :label="$t('registerAsNew')" :to="{name: 'register'}" />
       </q-card-actions>
     </q-card>
-  </div>
+    <q-page-sticky position="top-left" :offset="[18, 18]">
+      <q-btn fab color="accent" icon="undo" :to="{name: 'home'}" :title="$t('home')" />
+    </q-page-sticky>
+  </q-layout>
 </template>
 
 <style lang="stylus" scoped>

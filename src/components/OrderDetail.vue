@@ -1,11 +1,11 @@
 <template>
-  <q-card class="my-card">
-      <img :src="imageUrl + item.image">
-      <q-card-section>
-        <span class="text-h6">Item id: {{this.orderRow.id}}</span>
-      </q-card-section>
-      <q-card-section>
-        <span class="text-h6">{{$t('total')}}: {{this.orderRow.price| currency}}</span>
+  <q-card class="myCard">
+    <q-card-section v-if="item" class="itemSection">
+      <img id="itemImage" :src="imageUrl + item.image" class="itemAttribute">
+      <div class="itemAttribute">
+        <span class="text-h6 row">Item id: {{this.orderRow.id}}</span>
+        <span class="text-h6 row">{{$t('total')}}: {{this.orderRow.price| currency}}</span>
+      </div>
       </q-card-section>
     </q-card>
 </template>
@@ -50,6 +50,15 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .my-card
-    max-width 250px
+  .myCard
+    margin-bottom: 1vw;
+  .itemSection
+    display: table
+    width: -webkit-fill-available
+  #itemImage
+    max-width: 250px
+  .itemAttribute
+    display: table-cell
+    vertical-align: middle
+
 </style>

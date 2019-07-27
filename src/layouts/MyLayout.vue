@@ -20,7 +20,7 @@
             <q-icon v-else name="clear" class="cursor-pointer" @click="search = ''" />
           </template>
         </q-input>-->
-        <q-btn flat class="q-ml-md" :label="$t('login')" :to="{name: 'login'}" />
+        <q-btn v-if="!this.$store.state.customer.id" flat class="q-ml-md" :label="$t('login')" :to="{name: 'login'}" />
       </q-toolbar>
     </q-header>
     <q-drawer
@@ -108,10 +108,9 @@ export default {
       }
     },
     logout: function () {
-      this.setEmail()
-      this.setToken()
+      this.setCustomer()
     },
-    ...mapMutations('customer', ['setToken', 'setEmail'])
+    ...mapMutations('customer', ['setToken', 'setEmail', 'setCustomer'])
   }
 }
 </script>
