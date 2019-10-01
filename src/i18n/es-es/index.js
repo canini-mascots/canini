@@ -3,8 +3,9 @@ export default {
   enter: 'Entrar',
   email: 'Correo electrónico',
   password: 'Contraseña',
-  remember: 'No cerrar sesión',
+  remember: 'Recordarme',
   wrongUserPass: 'Usuario o contraseña incorrectos',
+  notRememberPassword: 'No recuerdo mi contraseña',
 
   // Layout
   login: 'Iniciar sesión',
@@ -47,12 +48,18 @@ export default {
 
   // Register
   registerAsNew: 'Registrarse como nuevo usuario',
-  notYetUser: '¿Todavía no eres usuari@?, registrate y empieza a disfrutar de todo lo que Canini puede ofrecerte.',
+  notYetUser: '¿Todavía no eres usuario?',
   repeatPassword: 'Repetir contraseña',
   repeatPasswordError: 'Las contraseñas no coinciden',
   passwordRequeriments: 'La contraseña debe tener 1 número, 1 mayuscula y un mínimo de 6 carácteres',
   receiveOffers: 'Recibir ofertas y promociones por correo electrónico',
   userRegistered: 'Usuario registrado correctamente',
   invalidEmail: 'Email no válido',
-  notUniqueEmail: 'Email no único'
+  notUniqueEmail: 'Email no único',
+
+  // RememberPassword
+  dontWorry: '¡No te preocupes! Rellena los datos:',
+  weSendEmail: 'Te enviaremos un correo para restablecer tu contraseña',
+  send: 'ENVIAR',
+  newPassword: 'Introduce la nueva contraseña'
 }

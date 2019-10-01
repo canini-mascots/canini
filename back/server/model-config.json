@@ -67,5 +67,8 @@
   "OrderRow": {
     "dataSource": "db",
     "public": true    
+  },
+  "Email": {
+    "dataSource": "Email"
   }
 }

@@ -108,7 +108,11 @@ export default {
       }
     },
     logout: function () {
+      let params = {
+        access_token: this.$store.state.customer.token
+      }
       this.setCustomer()
+      this.$axios.post('customers/logout', params)
     },
     ...mapMutations('customer', ['setToken', 'setEmail', 'setCustomer'])
   }

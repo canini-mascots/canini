@@ -50,7 +50,8 @@ module.exports = function (ctx) {
         'QInput',
         'QSeparator',
         'QImg',
-        'QPageSticky'
+        'QPageSticky',
+        'QPageScroller'
       ],
 
       directives: [

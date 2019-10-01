@@ -38,6 +38,14 @@ const routes = [
     name: 'login',
     path: '/login',
     component: () => import('layouts/Login.vue')
+  }, {
+    name: 'rememberPassword',
+    path: '/remember-password',
+    component: () => import('layouts/RememberPassword.vue')
+  }, {
+    name: 'setPassword',
+    path: '/set-password',
+    component: () => import('layouts/SetPassword.vue')
   }
 ]
 
