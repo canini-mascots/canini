@@ -32,6 +32,18 @@ const routes = [
         name: 'register',
         path: '/register',
         component: () => import('pages/Register.vue')
+      }, {
+        name: 'accountConfiguration',
+        path: '/account-configuration',
+        component: () => import('pages/AccountConfiguration.vue')
+      }, {
+        name: 'suscriptions',
+        path: '/suscriptions',
+        component: () => import('pages/Suscriptions.vue')
+      }, {
+        name: 'myMascots',
+        path: '/my-mascots',
+        component: () => import('pages/MyMascots.vue')
       }
     ]
   }, {

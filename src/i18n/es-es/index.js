@@ -15,10 +15,16 @@ export default {
   // Menu
   home: 'Inicio',
   catalog: 'Catálogo',
-  orders: 'Pedidos',
   conditions: 'Condiciones',
   about: 'Sobre nosotros',
   register: 'Registrarse',
+
+  // AccountMenu
+  configuration: 'Configuración',
+  orders: 'Pedidos',
+  suscriptions: 'Suscripciones',
+  myMascots: 'Mis mascotas',
+  coininis: 'Coininis',
 
   // Home
   startOrder: 'Empezar pedido',

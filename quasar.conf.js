@@ -18,13 +18,14 @@ module.exports = function (ctx) {
       'material-icons', // optional, you are not bound to it
       // 'ionicons-v4',
       // 'mdi-v3',
-       //'fontawesome-v5',
+       'fontawesome-v5',
       // 'eva-icons'
     ],
 
     // framework: 'all', // --- includes everything; for dev only!
     framework: {
       components: [
+        'QAvatar',
         'QLayout',
         'QHeader',
         'QDrawer',

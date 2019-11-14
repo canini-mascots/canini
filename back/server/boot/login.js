@@ -11,13 +11,13 @@
 // 		}
 // 		UserModel.login(userCredentials,function (err, token) {			
 // 			if (err) {
-// 				res.status(401).json({"error": {"message":"wrongUserPass"}});
+// 				res.status(401).json({"error": {"message":"wrongUserPas"}});
 // 				return res;
 //             }
 //             else {
-// 				res.status(200).json(token);
-//             }
+//                 res.status(200).json(token);
 
+//             }
 		
 // 		});
 //     });

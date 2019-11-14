@@ -1,6 +1,6 @@
 <template>
   <q-layout class="login fullscreen row justify-center items-center bg-primary layout-view scroll">
-    <q-card id="myCard" class="q-pa-md q-ma-md">
+    <q-card id="myCard" class="q-ma-md">
       <q-card-section class="q-mb-lg">
         <img src="statics/logo.svg" alt="Canini" />
       </q-card-section>

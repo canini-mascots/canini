@@ -47,6 +47,7 @@
 </style>
 
 <script>
+import { showNotif } from 'assets/js/notification.js'
 export default {
   name: 'RememberPasword',
   data () {
@@ -56,12 +57,14 @@ export default {
   },
   methods: {
     onSend () {
+      var q = this.$q
       let params = {
         email: this.email
       }
       this.$axios.post('request-password-reset', params).then(
         response => {
-          console.log(response)
+          showNotif('top', response.data.success.message, 'positive', q)
+          this.$router.push('login')
         }
       )
     },
