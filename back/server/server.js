@@ -23,9 +23,17 @@ app.start = function() {
   });
 };
 
+let options = __dirname;
+
+if (process.env.NODE_ENV === 'production')
+  options = {
+      appRootDir: __dirname,
+      appConfigRootDir: '/etc/canini'
+  };
+
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
-boot(app, __dirname, function(err) {
+boot(app, options, function(err) {
   if (err) throw err;
 
   // start the server if `$ node server.js`
