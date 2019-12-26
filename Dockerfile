@@ -30,4 +30,4 @@ COPY dist/spa client
 CMD ["pm2-runtime", "./process.yml"]
 
 HEALTHCHECK --interval=1m --timeout=10s \
-    CMD curl -f http://localhost:3000 || exit 1
+    CMD curl -f http://localhost:3000/status || exit 1
