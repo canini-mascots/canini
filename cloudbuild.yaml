@@ -5,4 +5,12 @@ steps:
   args: ['run', 'build']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/canini', '.']
-images: ['gcr.io/$PROJECT_ID/canini']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/canini']
+- name: 'gcr.io/cloud-builders/gke-deploy:stable'
+  args:
+  - run
+  - --image=gcr.io/$PROJECT_ID/canini:latest
+  - --location=europe-west1-b
+  - --cluster=cluster
+  - --filename=kubeconfig.yaml
