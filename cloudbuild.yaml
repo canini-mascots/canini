@@ -7,7 +7,7 @@ steps:
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/canini:test', '.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/canini:test']
-- name: 'gcr.io/cloud-builders/gke-deploy:test'
+- name: 'gcr.io/cloud-builders/gke-deploy:stable'
   args:
   - run
   - --location=europe-west1-b
