@@ -4,9 +4,9 @@ steps:
 - name: 'gcr.io/cloud-builders/npm'
   args: ['run', 'build']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/canini', '.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/canini:master', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/canini']
+  args: ['push', 'gcr.io/$PROJECT_ID/canini:master']
 - name: 'gcr.io/cloud-builders/gke-deploy:stable'
   args:
   - run
