@@ -27,8 +27,11 @@ app.start = function() {
 let options = {appRootDir: __dirname};
 
 let dsRootDir = `/etc/salix`;
-if (fs.existsSync(dsRootDir))
+if (fs.existsSync(dsRootDir)) {
   options.dsRootDir = dsRootDir;
+  console.log('datasources.json', JSON.stringify(require('/etc/salix/datasources.json')));
+  console.log('datasources.local.json', JSON.stringify(require('/etc/salix/datasources.local.json')));
+}
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
