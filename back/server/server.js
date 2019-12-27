@@ -27,10 +27,12 @@ app.start = function() {
 let options = {appRootDir: __dirname};
 
 let dsRootDir = `/etc/salix`;
-if (fs.existsSync(dsRootDir)) {
+if (process.env.NODE_ENV === 'production') {
   options.dsRootDir = dsRootDir;
   console.log('datasources.json', JSON.stringify(require('/etc/salix/datasources.json')));
   console.log('datasources.local.json', JSON.stringify(require('/etc/salix/datasources.local.json')));
+} else {
+  console.log('Default dsRootdir');
 }
 
 // Bootstrap the application, configure models, datasources and middleware.
