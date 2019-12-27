@@ -26,9 +26,8 @@ app.start = function() {
 
 let options = {appRootDir: __dirname};
 
-let dsRootDir = `/etc/salix`;
 if (process.env.NODE_ENV === 'production') {
-  options.dsRootDir = dsRootDir;
+  options.dsRootDir = `/etc/salix`;
   console.log('datasources.json', JSON.stringify(require('/etc/salix/datasources.json')));
   console.log('datasources.local.json', JSON.stringify(require('/etc/salix/datasources.local.json')));
 } else {
