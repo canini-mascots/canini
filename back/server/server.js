@@ -7,6 +7,7 @@
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+var fs = require('fs');
 
 var app = module.exports = loopback();
 
@@ -23,13 +24,11 @@ app.start = function() {
   });
 };
 
-let options = __dirname;
+let options = {appRootDir: __dirname};
 
-if (process.env.NODE_ENV === 'production')
-  options = {
-      appRootDir: __dirname,
-      dsRootDir: '/etc/canini'
-  };
+let dsRootDir = `/etc/salix`;
+if (fs.existsSync(dsRootDir))
+  options.dsRootDir = dsRootDir;
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
