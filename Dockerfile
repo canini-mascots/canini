@@ -24,6 +24,7 @@ COPY \
     LICENSE \
     README.md \
     ./
+COPY back/datasources.json /etc/canini/
 COPY back .
 COPY dist/spa client
 
