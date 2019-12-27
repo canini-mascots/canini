@@ -12,9 +12,9 @@ steps:
     - 'gcr.io/$PROJECT_ID/canini:$SHORT_SHA'
     - '.'
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['tag', 'latest', 'gcr.io/$PROJECT_ID/canini:$SHORT_SHA']
-- name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/canini:$SHORT_SHA']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['tag', 'latest', 'gcr.io/$PROJECT_ID/canini:$SHORT_SHA']
 - name: 'gcr.io/cloud-builders/gke-deploy:stable'
   env:
     - 'SHORT_SHA=$SHORT_SHA'
