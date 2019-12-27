@@ -4,7 +4,15 @@ steps:
 - name: 'gcr.io/cloud-builders/npm'
   args: ['run', 'build']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/canini:$SHORT_SHA', '.']
+  args:
+    - 'build'
+    - '--cache-from'
+    - 'gcr.io/$PROJECT_ID/canini:latest'
+    - '-t'
+    - 'gcr.io/$PROJECT_ID/canini:$SHORT_SHA'
+    - '.'
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['tag', 'latest', 'gcr.io/$PROJECT_ID/canini:$SHORT_SHA']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/canini:$SHORT_SHA']
 - name: 'gcr.io/cloud-builders/gke-deploy:stable'
@@ -16,3 +24,4 @@ steps:
   - --location=europe-west1-b
   - --cluster=cluster
   - --filename=kubeconfig.yaml
+  - --image=gcr.io/$PROJECT_ID/canini:$SHORT_SHA
