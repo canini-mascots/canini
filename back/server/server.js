@@ -26,13 +26,9 @@ app.start = function() {
 
 let options = {appRootDir: __dirname};
 
-if (process.env.NODE_ENV === 'production') {
-  options.dsRootDir = `/etc/canini`;
-  console.log('datasources.json', JSON.stringify(require('/etc/canini/datasources.json')));
-  console.log('datasources.local.json', JSON.stringify(require('/etc/canini/datasources.local.json')));
-} else {
-  console.log('Default dsRootdir');
-}
+let dsRootDir = `/etc/canini`;
+if (fs.existsSync(dsRootDir))
+  options.dsRootDir = dsRootDir;
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.

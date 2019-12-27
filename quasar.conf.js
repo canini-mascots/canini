@@ -88,7 +88,10 @@ module.exports = function (ctx) {
     devServer: {
       // https: true,
       // port: 8080,
-      open: true // opens browser window automatically
+      open: true, // opens browser window automatically
+      proxy: {
+        '/api': 'http://localhost:3000'
+      }
     },
 
     // animations: 'all' --- includes all animations
