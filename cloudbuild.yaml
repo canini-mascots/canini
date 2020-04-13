@@ -13,7 +13,7 @@ steps:
     - 'PROJECT_ID=$PROJECT_ID'
   args:
   - run
-  - --location=europe-west1-b
+  - --location=europe-west6-a
   - --cluster=cluster
   - --filename=kubeconfig.yaml
   - --image=gcr.io/$PROJECT_ID/canini:$SHORT_SHA
