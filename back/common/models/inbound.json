@@ -3,7 +3,7 @@
 	"base": "PersistedModel",
     "options": {
         "mysql": {
-          "table": "inbound"
+          "table": "stock.inbound"
         }
     },
     "properties": {

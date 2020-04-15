@@ -54,7 +54,7 @@
     "dataSource": "vn"
   },
   "Inbound": {
-    "dataSource": "stock"
+    "dataSource": "vn"
   },
   "Customer": {
     "dataSource": "db",
@@ -69,6 +69,6 @@
     "public": true    
   },
   "Email": {
-    "dataSource": "Email"
+    "dataSource": "email"
   }
 }
