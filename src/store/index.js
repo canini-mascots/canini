@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
-// import example from './module-example'
+import customer from './customer'
+import VuexPersistence from 'vuex-persist'
 
 Vue.use(Vuex)
-
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage,
+  key: 'canini_app'
+})
 /*
  * If not building with SSR mode, you can
  * directly export the Store instantiation
@@ -13,8 +16,9 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      // example
-    }
+      customer
+    },
+    plugins: [vuexLocal.plugin]
   })
 
   return Store

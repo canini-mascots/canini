@@ -1,0 +1,24 @@
+{
+    "name": "Buy",
+	"base": "PersistedModel",
+    "options": {
+        "mysql": {
+          "table": "buy"
+        }
+    },
+    "properties": {
+        "id": {
+            "type": "Number",
+            "id": true,
+            "description": "Identifier"
+        },
+        "itemFk": {
+            "type": "Number"
+        },
+        "price3": {
+            "type": "Number"
+        }
+    },
+    "relations": {
+    }
+  }

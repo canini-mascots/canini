@@ -1,0 +1,34 @@
+{
+  "name": "Order",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "mysql": {
+        "table": "order"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "Number",
+      "id": true,
+      "generated": true
+    },
+    "price": {
+        "type": "Number"
+    },
+    "date": {
+        "type": "Date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "buys": {
+      "type": "hasMany",
+      "model": "Buy",
+      "foreignKey": "orderId",
+      "through": "OrderRow"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

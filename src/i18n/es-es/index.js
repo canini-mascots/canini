@@ -3,19 +3,28 @@ export default {
   enter: 'Entrar',
   email: 'Correo electrónico',
   password: 'Contraseña',
-  remember: 'No cerrar sesión',
+  remember: 'Recordarme',
+  wrongUserPass: 'Usuario o contraseña incorrectos',
+  notRememberPassword: 'No recuerdo mi contraseña',
 
   // Layout
   login: 'Iniciar sesión',
   visitor: 'Visitante',
+  logout: 'Cerrar sesión',
 
   // Menu
   home: 'Inicio',
   catalog: 'Catálogo',
-  orders: 'Pedidos',
   conditions: 'Condiciones',
   about: 'Sobre nosotros',
   register: 'Registrarse',
+
+  // AccountMenu
+  configuration: 'Configuración',
+  orders: 'Pedidos',
+  suscriptions: 'Suscripciones',
+  myMascots: 'Mis mascotas',
+  coininis: 'Coininis',
 
   // Home
   startOrder: 'Empezar pedido',
@@ -32,9 +41,11 @@ export default {
   categories: 'Categorias',
 
   // Orders
+  orderNumber: 'Número del pedido',
   viewDetails: 'Ver detalles',
-  of: 'of',
-
+  of: 'de',
+  orderPlaced: 'Pedido realizado',
+  total: 'Total',
   // Conditions
   conditionsDesc: 'Te aseguramos que el pedido llegara a tu casa/tienda en menos de 24/48 horas (Dependiendo de en que zona te encuentres).',
 
@@ -43,8 +54,18 @@ export default {
 
   // Register
   registerAsNew: 'Registrarse como nuevo usuario',
-  notYetUser: '¿Todavía no eres usuari@?, registrate y empieza a disfrutar de todo lo que Canini puede ofrecerte.',
+  notYetUser: '¿Todavía no eres usuario?',
   repeatPassword: 'Repetir contraseña',
+  repeatPasswordError: 'Las contraseñas no coinciden',
+  passwordRequeriments: 'La contraseña debe tener 1 número, 1 mayuscula y un mínimo de 6 carácteres',
   receiveOffers: 'Recibir ofertas y promociones por correo electrónico',
-  userRegistered: 'Usuario registrado correctamente'
+  userRegistered: 'Usuario registrado correctamente',
+  invalidEmail: 'Email no válido',
+  notUniqueEmail: 'Email no único',
+
+  // RememberPassword
+  dontWorry: '¡No te preocupes! Rellena los datos:',
+  weSendEmail: 'Te enviaremos un correo para restablecer tu contraseña',
+  send: 'ENVIAR',
+  newPassword: 'Introduce la nueva contraseña'
 }

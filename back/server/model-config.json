@@ -49,5 +49,26 @@
   },
   "Tag": {
       "dataSource": "vn"
+  },
+  "Buy": {
+    "dataSource": "vn"
+  },
+  "Inbound": {
+    "dataSource": "stock"
+  },
+  "Customer": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Order": {
+    "dataSource": "db",
+    "public": true
+  },
+  "OrderRow": {
+    "dataSource": "db",
+    "public": true    
+  },
+  "Email": {
+    "dataSource": "Email"
   }
 }
