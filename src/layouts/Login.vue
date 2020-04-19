@@ -1,12 +1,18 @@
 <template>
-  <q-layout class="login fullscreen row justify-center items-center bg-primary layout-view scroll">
-    <q-card id="myCard" class="q-ma-md">
-      <q-card-section class="q-mb-lg">
+  <q-layout id="bg" class="fullscreen row justify-center items-center layout-view scroll">
+    <q-card class="q-pa-xl">
+      <q-card-section>
         <img src="statics/logo.svg" alt="Canini" />
       </q-card-section>
       <q-card-section class="q-gutter-md">
-        <q-input filled v-model="email" :label="$t('email')" />
-        <q-input filled v-model="password" :label="$t('password')" :type="showPwd ? 'password' : 'text'">
+        <q-input filled
+          v-model="email"
+          :label="$t('email')"
+        />
+        <q-input filled
+          v-model="password"
+          :label="$t('password')"
+          :type="showPwd ? 'password' : 'text'">
           <template v-slot:append>
             <q-icon
               :name="showPwd ? 'visibility_off' : 'visibility'"
@@ -15,46 +21,47 @@
             />
           </template>
         </q-input>
-      </q-card-section>
-      <q-card-section class="q-gutter-md">
-        <div class="row">
-          <div class="col">
-            <q-checkbox id="checkbox" dense v-model="remember" :label="$t('remember')" />
-          </div>
-          <div class="col">
-            <q-item-label id="remember" @click="toRemember">{{$t('notRememberPassword')}}</q-item-label>
+        <q-checkbox dense v-model="remember" :label="$t('remember')" />
+        <div class="justify-center">
+          <q-btn
+            :label="$t('enter')"
+            @click="onLogin"
+            :disable="checkInputs()"
+            class="full-width"
+            color="black"
+            rounded
+          />
+          <div class="text-center q-mt-xs">
+            <router-link to="remember-password">
+              {{$t('notRememberPassword')}}
+            </router-link>
           </div>
         </div>
       </q-card-section>
-      <q-card-section class="justify-center">
-        <q-btn rounded class="full-width" color="black" :label="$t('enter')" @click="onLogin" :disable="checkInputs()"/>
-      </q-card-section>
-      <q-card-section  id="sectionNotYetUser" class="justify-center items-center">
-        <span id="notYetUser">{{$t('notYetUser')}}</span>
-      </q-card-section>
-      <q-card-section class="justify-center">
-        <q-btn rounded class="full-width" color="primary"  :label="$t('register')" :to="{name: 'register'}" />
+      <q-card-section>
+        <div class="text-center q-mb-xs text-grey-8">
+          {{$t('notYetUser')}}
+        </div>
+        <q-btn
+          :label="$t('register')"
+          to="register"
+          class="full-width"
+          color="primary"
+          rounded
+        />
       </q-card-section>
     </q-card>
   </q-layout>
 </template>
 
 <style lang="stylus" scoped>
-  #remember {
-    cursor pointer
-  }
-  #myCard {
-    border-radius: 12px;
-  }
-  .login
-    position: fixed;
-    .q-card
-      max-width: 320px;
-  #sectionNotYetUser
-    margin: 0 auto
-    text-align: center
-  #notYetUser
-    opacity: 0.5;
+  #bg
+    position: fixed
+    background-image url("/statics/background.png")
+    background-repeat repeat
+  .q-card
+    border-radius 12px
+    width: 380px
 </style>
 
 <script>
@@ -74,9 +81,6 @@ export default {
     }
   },
   methods: {
-    toRemember () {
-      this.$router.push('/remember-password')
-    },
     onLogin () {
       let params = {
         email: this.email,

@@ -65,7 +65,8 @@ export default {
   notUniqueEmail: 'Email not unique',
 
   // RememberPassword
-  dontWorry: "¡Don't worry! Fill in the data:",
+  dontWorry: "¡Don't worry!",
+  fillData: "Fill in the data",
   weSendEmail: 'We will send you an email to reset your password',
   send: 'SEND',
   newPassword: 'Enter the new password'
