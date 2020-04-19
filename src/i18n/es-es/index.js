@@ -64,7 +64,8 @@ export default {
   notUniqueEmail: 'Email no único',
 
   // RememberPassword
-  dontWorry: '¡No te preocupes! Rellena los datos:',
+  dontWorry: '¡No te preocupes!',
+  fillData: "Rellena los datos",
   weSendEmail: 'Te enviaremos un correo para restablecer tu contraseña',
   send: 'ENVIAR',
   newPassword: 'Introduce la nueva contraseña'
