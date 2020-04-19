@@ -1,7 +1,21 @@
 // app global css
 a
   text-decoration none
+  color inherit
+  &:focus
+    outline 1px solid rgba(0, 0, 0, .1)
+
+.link
   color #44629e
   &:active
     color #44629e
 
+.slide-left-leave-active, .slide-right-enter
+  transform translate(-30px, 0)
+  opacity 0
+.slide-left-enter, .slide-right-leave-active
+  transform translate(30px, 0)
+  opacity 0
+.child-view
+  position absolute
+  transition all .15s ease-out

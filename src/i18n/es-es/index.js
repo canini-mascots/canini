@@ -65,8 +65,9 @@ export default {
 
   // RememberPassword
   dontWorry: '¡No te preocupes!',
-  fillData: "Rellena los datos",
+  fillData: 'Rellena los datos',
   weSendEmail: 'Te enviaremos un correo para restablecer tu contraseña',
-  send: 'ENVIAR',
+  send: 'Enviar',
+  returnToLogin: 'Volver al login',
   newPassword: 'Introduce la nueva contraseña'
 }

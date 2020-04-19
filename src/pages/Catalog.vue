@@ -2,7 +2,6 @@
   <div>
     <q-drawer
       v-model="rightDrawerOpen"
-      content-class="bg-grey-2"
       side="right"
       elevated
     >

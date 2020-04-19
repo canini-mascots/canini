@@ -1,7 +1,7 @@
 <template>
-  <q-layout view="lHh LpR fFf" class="bg-grey-3">
-    <q-header elevated>
-      <q-toolbar class="bg-grey-9">
+  <q-layout view="lHh LpR fFf" class="bg-grey-1">
+    <q-header elevated class="bg-secondary">
+      <q-toolbar>
         <q-btn
           flat
           dense
@@ -21,41 +21,51 @@
           </q-input>
           </div>
         </q-toolbar-title>
-        <q-btn v-if="!this.$store.state.customer.id" flat class="q-ml-md" :label="$t('login')" :to="{name: 'login'}" />
-        <q-btn v-else flat class="q-ml-md" @click="rightDrawerOpen = !rightDrawerOpen">
+        <q-btn
+          v-if="!this.$store.state.customer.id"
+          :to="{name: 'login'}"
+          flat
+          dense
+          round
+        >
+          <q-icon name="person" />
+        </q-btn>
+        <q-btn
+          @click="rightDrawerOpen = !rightDrawerOpen"
+          v-else
+          flat
+          class="q-ml-md">
           <q-icon name="fas fa-user" color="grey-1" />
         </q-btn>
       </q-toolbar>
     </q-header>
-    <!-- Global Menu -->
     <q-drawer
       v-model="leftDrawerOpen"
-      content-class="bg-grey-2"
+      behavior="mobile"
       elevated
     >
-      <div class="q-pa-md shadow-1 q-mb-md bg-grey-9" style="color: white;">
-        <img src="statics/logo.svg" alt="Canini" class="logo q-mb-md"/>
-        <div class="row items-center full-width justify-between">
-          <span class="text-subtitle1">{{checkUser()}}</span>
-          <q-btn
-            flat
-            round
-            dense
-            icon="exit_to_app"
-            :to="{name: 'login'}"
-            :title="$t('login')"
-            v-if="!this.$store.state.customer.email"
+      <div class="q-pa-md shadow-1 q-mb-md bg-primary" style="color: white;">
+        <img src="statics/logo.svg" alt="Canini" class="logo q-my-md q-mx-md"/>
+        <div class="text-subtitle1">
+          <div
+            v-if="this.$store.state.customer.email"
+            class="row items-center full-width justify-between">
+            <span>{{checkUser()}}</span>
+            <q-btn
+              icon="exit_to_app"
+              to="/login"
+              :title="$t('logout')"
+              @click="logout"
+              flat
+              dense
+              round
             />
-          <q-btn
-            flat
-            round
-            dense
-            icon="exit_to_app"
-            :to="{name: 'login'}"
-            :title="$t('logout')"
-            @click="logout"
-            v-else
-            />
+          </div>
+          <div v-else>
+            <router-link to="/login">
+              {{$t('login')}}
+            </router-link>
+          </div>
         </div>
       </div>
       <q-list class="text-body1">
@@ -87,23 +97,23 @@
       </q-list>
     </q-drawer>
 
-    <!--Account Menu -->
+    <!-- Account Menu -->
     <q-drawer
       v-model="rightDrawerOpen"
       content-class="bg-grey-2"
       side="right"
       overlay
-  >
+    >
       <q-list class="text-body1">
         <q-img src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
-              <div class="absolute-bottom bg-transparent">
-                <q-avatar size="56px" class="q-mb-sm">
-                  <img src="https://cdn.quasar.dev/img/boy-avatar.png">
-                </q-avatar>
-                <div class="text-weight-bold">Josep manzanera</div>
-                <div>{{$t('coininis')}}: 100</div>
-              </div>
-            </q-img>
+          <div class="absolute-bottom bg-transparent">
+            <q-avatar size="56px" class="q-mb-sm">
+              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+            </q-avatar>
+            <div class="text-weight-bold">Josep manzanera</div>
+            <div>{{$t('coininis')}}: 100</div>
+          </div>
+        </q-img>
         <q-item clickable :to="{name: 'accountConfiguration'}">
           <q-item-section>
             <q-item-label>{{$t('configuration')}}</q-item-label>
@@ -126,17 +136,32 @@
         </q-item>
       </q-list>
     </q-drawer>
+    <!-- Account Menu -->
+
     <q-page-container>
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
+<style lang="stylus" scoped>
+.logo
+  width 220px
+  display block
+#search
+  max-width 400px
+  margin 0 auto
+  text-align center
+#toolbarTitle
+  margin 0 auto
+  text-align center
+</style>
+
 <script>
 import { openURL } from 'quasar'
 import { mapMutations } from 'vuex'
 export default {
-  name: 'MyLayout',
+  name: 'MainLayout',
   data () {
     return {
       leftDrawerOpen: false, // this.$q.platform.is.desktop
@@ -164,19 +189,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.logo {
-  height: 120px;
-  display: block;
-}
-#search {
-  max-width: 400px;
-  margin: 0 auto;
-  text-align: center;
-}
-#toolbarTitle {
-  margin: 0 auto;
-  text-align: center;
-}
-</style>
