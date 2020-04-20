@@ -2,16 +2,22 @@
   <div class="fixed-center text-center">
     <p>
       <img
-        src="~assets/sad.svg"
-        style="width:30vw;max-width:150px;"
+        src="~assets/not-found.svg"
+        style="width: 40vw; max-width: 300px;"
       >
     </p>
-    <p class="text-faded">Sorry, nothing here...<strong>(404)</strong></p>
+    <div class="text-h5">
+      {{$t('whereYouGoingCowboy')}}
+    </div>
+    <p class="text-h3 text-grey-5">
+      404
+    </p>
     <q-btn
       color="secondary"
       style="width:200px;"
-      @click="$router.push('/')"
-    >Go back</q-btn>
+      @click="$router.push('/')">
+      {{$t('goBack')}}
+    </q-btn>
   </div>
 </template>
 

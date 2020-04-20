@@ -114,7 +114,7 @@
             <div>{{$t('coininis')}}: 100</div>
           </div>
         </q-img>
-        <q-item clickable :to="{name: 'accountConfiguration'}">
+        <q-item clickable :to="{name: 'account'}">
           <q-item-section>
             <q-item-label>{{$t('configuration')}}</q-item-label>
           </q-item-section>

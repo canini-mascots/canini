@@ -7,6 +7,10 @@ export default {
   wrongUserPass: 'Wrong username or password',
   notRememberPassword: "I don't remember my password",
 
+  // Erro404
+  whereYouGoingCowboy: 'Where are you going cowboy?',
+  goBack: 'Go back',
+
   // Layout
   login: 'Login',
   visitor: 'Visitor',
