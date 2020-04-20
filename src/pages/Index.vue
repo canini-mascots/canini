@@ -10,7 +10,7 @@
       navigation
       padding
       arrows
-      height="500px"
+      height="400px"
       class="bg-grey-10 shadow-1"
     >
       <q-carousel-slide

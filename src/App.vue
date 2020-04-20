@@ -1,6 +1,8 @@
 <template>
   <div id="q-app">
-    <router-view />
+    <transition name="slide-right">
+      <router-view class="child-view"/>
+    </transition>
   </div>
 </template>
 
@@ -9,6 +11,3 @@ export default {
   name: 'App'
 }
 </script>
-
-<style>
-</style>

@@ -1,35 +1,38 @@
 <template>
-  <q-layout id="bg" class="fullscreen row justify-center items-center layout-view scroll">
-    <q-card class="q-pa-xl text-center">
-      <q-card-section>
-        <img id="image" src="statics/remember-password.svg" alt="Canini" />
-      </q-card-section>
-      <q-card-section class="q-gutter-md text-grey-8">
-        <div class="text-h5">
-          <div>
-            {{$t('dontWorry')}}
-          </div>
-          <div>
-            {{$t('fillData')}}
-          </div>
-        </div>
-        <q-input filled v-model="email" :label="$t('email')" />
+  <div class="text-center">
+    <q-card-section>
+      <img id="image" src="statics/remember-password.svg" alt="Canini" />
+    </q-card-section>
+    <q-card-section class="q-gutter-md text-grey-8">
+      <div class="text-h5">
         <div>
-          {{$t('weSendEmail')}}
+          {{$t('dontWorry')}}
         </div>
-      </q-card-section>
-      <q-card-section class="justify-center">
-        <q-btn
-          :label="$t('send')"
-          @click="onSend"
-          :disable="checkInputs()"
-          rounded
-          class="full-width"
-          color="black"
-        />
-      </q-card-section>
-    </q-card>
-  </q-layout>
+        <div>
+          {{$t('fillData')}}
+        </div>
+      </div>
+      <q-input filled v-model="email" :label="$t('email')" />
+      <div>
+        {{$t('weSendEmail')}}
+      </div>
+    </q-card-section>
+    <q-card-section class="justify-center">
+      <q-btn
+        :label="$t('send')"
+        @click="onSend"
+        :disable="checkInputs()"
+        rounded
+        class="full-width"
+        color="black"
+      />
+      <div class="text-center q-mt-xs">
+        <router-link to="/login/" class="link">
+          {{$t('returnToLogin')}}
+        </router-link>
+      </div>
+    </q-card-section>
+  </div>
 </template>
 
 <style lang="stylus" scoped>

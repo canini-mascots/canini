@@ -66,9 +66,10 @@ export default {
 
   // RememberPassword
   dontWorry: "¡Don't worry!",
-  fillData: "Fill in the data",
+  fillData: 'Fill in the data',
   weSendEmail: 'We will send you an email to reset your password',
-  send: 'SEND',
+  send: 'Send',
+  returnToLogin: 'Return to login',
   newPassword: 'Enter the new password'
 
 }
