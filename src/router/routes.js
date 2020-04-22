@@ -33,9 +33,9 @@ const routes = [
         path: 'register',
         component: () => import('pages/Register.vue')
       }, {
-        name: 'accountConfiguration',
-        path: 'account-configuration',
-        component: () => import('pages/AccountConfiguration.vue')
+        name: 'account',
+        path: 'account',
+        component: () => import('pages/Account.vue')
       }, {
         name: 'suscriptions',
         path: 'suscriptions',
