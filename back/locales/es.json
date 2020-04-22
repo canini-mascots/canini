@@ -1,0 +1,9 @@
+{
+	"login failed": "Usuario o contraseña incorrectos",
+	"is blank": "No puede estar vacío",
+	"is invalid": "Valor inválido",
+	"can't be blank": "El campo no puede estar vacío",
+	"invalidData": "Los datos son inválidos",
+	"invalidEmail": "Correo inválido",
+	"passwordRequeriments": "La contraseña no cumple los requisitos"
+}

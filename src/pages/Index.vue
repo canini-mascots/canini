@@ -6,11 +6,9 @@
       transition-next="slide-left"
       animated
       swipeable
-      control-color="black"
+      control-color="white"
       navigation
       padding
-      arrows
-      height="400px"
       class="bg-grey-10 shadow-1"
     >
       <q-carousel-slide
@@ -21,9 +19,8 @@
         class="column no-wrap"
       >
         <div
-          class="text-h6 absolute-top text-center"
-          v-if="slide.description"
-        >{{$t(slide.description)}}</div>
+          class="slide-text q-mt-md text-h4 text-center"
+        >{{ $te(slide.text)? $t(slide.text): slide.text }}</div>
       </q-carousel-slide>
     </q-carousel>
     <div class="q-pa-md row justify-center q-gutter-md">
@@ -31,8 +28,8 @@
         <q-img class="custom-image" ratio="1" position="50% 50%" :src="offer.image">
           <div
             class="text-h6 absolute-top text-center"
-            v-if="offer.description"
-          >{{$t(offer.description)}}</div>
+            v-if="offer.text"
+          >{{$te(offer.text)? $t(offer.text): offer.text}}</div>
         </q-img>
       </q-card>
     </div>
@@ -65,6 +62,11 @@
     height: 63.2vw !important;
   }
 }
+
+.slide-text {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: white;
+}
 </style>
 
 <script>
@@ -87,27 +89,27 @@ export default {
         {
           id: "a",
           image: "statics/resources/noticia-1.png",
-          description: null
+          text: null
         },
         {
           id: "b",
           image: "statics/resources/kit.png",
-          description: "receiveWithKit"
+          text: "receiveWithKit"
         },
         {
           id: "c",
           image: "statics/resources/offers.png",
-          description: "tooManyOffers"
+          text: "tooManyOffers"
         },
         {
           id: "d",
           image: "statics/resources/concentration.png",
-          description: "concentrationGames"
+          text: "concentrationGames"
         },
         {
           id: "e",
           image: "statics/resources/veggie.png",
-          description: "veggieMeat"
+          text: "veggieMeat"
         }
       ]
     };
