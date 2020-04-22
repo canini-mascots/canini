@@ -1,51 +1,53 @@
 {
-    "name": "ItemTag",
-    "base": "PersistedModel",
-    "options": {
-        "mysql": {
-            "table": "itemTag"
-        }
+  "name": "ItemTag",
+  "base": "PersistedModel",
+  "options": {
+    "mysql": {
+      "table": "itemTag"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "Number",
+      "id": true,
+      "description": "Identifier"
     },
-    "properties": {
-        "id": {
-            "type": "Number",
-            "id": true,
-            "description": "Identifier"
-        },
-        "value": {
-            "type": "String"
-        },
-        "itemFk": {
-            "type": "Number",
-            "required": true
-        },
-        "tagFk": {
-            "type": "Number",
-            "required": true
-        },
-        "priority": {
-            "type": "Number",
-            "required": true
-        }
+    "value": {
+      "type": "String"
     },
-    "relations": {
-        "item": {
-            "type": "belongsTo",
-            "model": "Item",
-            "foreignKey": "itemFk"
-        },
-        "tag": {
-            "type": "belongsTo",
-            "model": "Tag",
-            "foreignKey": "tagFk"
-        }
+    "itemFk": {
+      "type": "Number",
+      "required": true
     },
-    "acls": [
-        {
-            "accessType": "READ",
-            "principalType": "ROLE",
-            "principalId": "$everyone",
-            "permission": "ALLOW"
-        }
-    ]
+    "tagFk": {
+      "type": "Number",
+      "required": true
+    },
+    "priority": {
+      "type": "Number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "item": {
+      "type": "belongsTo",
+      "model": "Item",
+      "foreignKey": "itemFk"
+    },
+    "tag": {
+      "type": "belongsTo",
+      "model": "Tag",
+      "foreignKey": "tagFk"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
 }

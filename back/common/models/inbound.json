@@ -1,37 +1,38 @@
 {
-    "name": "Inbound",
-	"base": "PersistedModel",
-    "options": {
-        "mysql": {
-          "table": "stock.inbound"
-        }
-    },
-    "properties": {
-        "id": {
-            "type": "Number",
-            "id": true,
-            "description": "Identifier"
-        },
-        "tableName": {
-            "type": "string"
-        },
-        "tableId": {
-            "type": "Number"
-        },
-        "itemFk": {
-            "type": "Number"
-        },
-        "dated": {
-            "type": "Date"
-        }
-        ,
-        "expired": {
-            "type": "Date"
-        },
-        "available": {
-            "type": "Number"
-        }
-    },
-    "relations": {
+  "name": "Inbound",
+  "base": "PersistedModel",
+  "options": {
+    "mysql": {
+      "table": "stock.inbound"
     }
-  }
+  },
+  "properties": {
+    "id": {
+      "type": "Number",
+      "id": true,
+      "description": "Identifier"
+    },
+    "tableName": {
+      "type": "string"
+    },
+    "tableId": {
+      "type": "Number"
+    },
+    "itemFk": {
+      "type": "Number"
+    },
+    "dated": {
+      "type": "Date"
+    },
+    "expired": {
+      "type": "Date"
+    },
+    "available": {
+      "type": "Number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

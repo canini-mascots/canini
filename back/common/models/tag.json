@@ -1,43 +1,46 @@
 {
-    "name": "Tag",
-    "base": "PersistedModel",
-    "options": {
-        "mysql": {
-          "table": "tag"
-        }
+  "name": "Tag",
+  "base": "PersistedModel",
+  "options": {
+    "mysql": {
+      "table": "tag"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "Number",
+      "id": true,
+      "description": "Identifier"
     },
-    "properties": {
-      "id": {
-        "type": "Number",
-        "id": true,
-        "description": "Identifier"
-      },
-      "name": {
-        "type": "String",
-        "required": true
-      },
-      "isFree": {
-        "type": "Boolean"
-      },
-      "sourceTable": {
-        "type": "String"
-      },
-      "unit": {
-        "type": "String"
-      },
-      "isQuantitative": {
-        "type": "Boolean",
-        "mysql": {
-          "columnName": "isQuantitatif"
-        }
-      }
+    "name": {
+      "type": "String",
+      "required": true
     },
-    "acls": [
-      {
-        "accessType": "READ",
-        "principalType": "ROLE",
-        "principalId": "$everyone",
-        "permission": "ALLOW"
+    "isFree": {
+      "type": "Boolean"
+    },
+    "sourceTable": {
+      "type": "String"
+    },
+    "unit": {
+      "type": "String"
+    },
+    "isQuantitative": {
+      "type": "Boolean",
+      "mysql": {
+        "columnName": "isQuantitatif"
       }
-    ]
-  }
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
