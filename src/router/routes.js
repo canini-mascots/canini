@@ -29,10 +29,6 @@ const routes = [
         path: 'about',
         component: () => import('pages/About.vue')
       }, {
-        name: 'register',
-        path: 'register',
-        component: () => import('pages/Register.vue')
-      }, {
         name: 'account',
         path: 'account',
         component: () => import('pages/Account.vue')
@@ -62,6 +58,10 @@ const routes = [
         name: 'setPassword',
         path: '/set-password',
         component: () => import('pages/SetPassword.vue')
+      }, {
+        name: 'register',
+        path: 'register',
+        component: () => import('pages/Register.vue')
       }
     ]
   }

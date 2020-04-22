@@ -1,52 +1,88 @@
 <template>
-  <div class="q-pa-md row justify-center q-gutter-md">
-    <q-card>
-      <q-card-section>
-        <div class="text-h4">{{$t('registerAsNew')}}</div>
-      </q-card-section>
-      <q-card-section>{{$t('notYetUser')}}</q-card-section>
-      <q-card-section class="q-gutter-md">
-        <q-input
-        outlined
-          v-model="email"
-          :label="$t('email')"
-          hint=""
-          :error-message= "$t(emailMessage)"
-          :error="emailError"
+  <div>
+    <q-card-section class="text-center">
+      <img
+        id="image"
+        src="statics/register.svg"
+        alt="Welcome!"
+      />
+    </q-card-section>
+    <q-card-section>
+      <q-form @submit="onRegister" class="q-gutter-y-md">
+        <div class="text-grey-8 text-h5 text-center">
+          {{$t('fillData')}}
+        </div>
+        <div class="q-gutter-y-sm">
+          <q-input
+            v-model="email"
+            :label="$t('email')"
+            :error="errors.email.error"
+            :error-message="errors.email.message"
+            hint=""
+            filled
+            />
+          <q-input
+            v-model="password"
+            :label="$t('password')"
+            :type="showPwd ? 'password' : 'text'"
+            :error="errors.password.error"
+            :error-message="errors.password.message"
+            hint=""
+            filled>
+            <template v-slot:append>
+              <q-icon
+                :name="showPwd ? 'visibility_off' : 'visibility'"
+                class="cursor-pointer"
+                @click="showPwd = !showPwd"
+              />
+            </template>
+          </q-input>
+          <q-input
+            v-model="repeatPassword"
+            :label="$t('repeatPassword')"
+            :type="showRpPwd ? 'password' : 'text'"
+            :rules="[value => value == password || $t('repeatPasswordError')]"
+            hint=""
+            filled>
+            <template v-slot:append>
+              <q-icon
+                :name="showRpPwd ? 'visibility_off' : 'visibility'"
+                class="cursor-pointer"
+                @click="showRpPwd = !showRpPwd"
+              />
+            </template>
+          </q-input>
+          <q-checkbox
+            v-model="receiveOffers"
+            :label="$t('receiveOffers')"
+            dense
           />
-        <q-input outlined v-model="password" :label="$t('password')" :type="showPwd ? 'password' : 'text'" hint="" :error-message= "$t(pwdMessage)" :error="pwdError">
-          <template v-slot:append>
-            <q-icon
-              :name="showPwd ? 'visibility_off' : 'visibility'"
-              class="cursor-pointer"
-              @click="showPwd = !showPwd"
-            />
-          </template>
-        </q-input>
-        <q-input outlined v-model="repeatPassword" :label="$t('repeatPassword')" :type="showRpPwd ? 'password' : 'text'" :rules="[repeatPassword => repeatPassword == password  || $t('repeatPasswordError')]" >
-          <template v-slot:append>
-            <q-icon
-              :name="showRpPwd ? 'visibility_off' : 'visibility'"
-              class="cursor-pointer"
-              @click="showRpPwd = !showRpPwd"
-            />
-          </template>
-        </q-input>
-      </q-card-section>
-      <q-card-section class="q-gutter-md">
-        <q-checkbox v-model="receiveOffers" :label="$t('receiveOffers')"/>
-      </q-card-section>
-      <q-card-actions class="justify-center">
-        <q-btn flat :label="$t('register')" @click="onRegister" :disable="checkInputs()"/>
-      </q-card-actions>
-    </q-card>
+        </div>
+        <div>
+          <q-btn
+            type="submit"
+            :label="$t('register')"
+            class="full-width"
+            color="black"
+            rounded
+          />
+          <div class="text-center q-mt-xs">
+            <router-link to="/login/" class="link">
+              {{$t('return')}}
+            </router-link>
+          </div>
+        </div>
+      </q-form>
+    </q-card-section>
   </div>
 </template>
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+  #image
+    height 150px
+</style>
 
 <script>
-import { showNotif, showInputError } from 'assets/js/notification.js'
 export default {
   name: 'Register',
   data () {
@@ -57,49 +93,47 @@ export default {
       receiveOffers: false,
       showPwd: true,
       showRpPwd: true,
-      emailError: false,
-      emailMessage: '',
-      pwdError: false,
-      pwdMessage: ''
+      errors: {
+        email: {},
+        password: {}
+      }
     }
   },
   methods: {
-    onRegister: function () {
+    async onRegister () {
       this.reset()
-      let params = {
-        email: this.email,
-        password: this.password,
-        repeatPassword: this.repeatPassword
+      try {
+        await this.$axios.post('Customers', {
+          email: this.email,
+          password: this.password
+        })
+        this.$q.notify({
+          message: this.$t('userRegistered'),
+          type: 'positive'
+        })
+        this.$router.push('/home')
+      } catch (err) {
+        this.checkErrors(err)
+        throw err
       }
-      this.$axios.post('customers', params).then(
-        response => {
-          showNotif('top', this.$t('userRegistered'), 'positive', this.$q)
-          this.$router.push('/home')
-        },
-        error => {
-          var errors = showInputError(error.response.data.error, this.$q)
-          this.checkErrors(errors)
-        }
-      )
     },
-    checkErrors (errors) {
-      var vue = this
-      Object.keys(errors).map(function (objectKey, index) {
-        var value = errors[objectKey]
-        if (objectKey === 'email') {
-          vue.emailError = true
-          vue.emailMessage = value
-        } else {
-          vue.pwdError = true
-          vue.pwdMessage = value
+    checkErrors (err) {
+      const isValidationError = err.response && err.response.status === 422
+      if (!isValidationError) return
+
+      const errors = {}
+      const messages = err.response.data.error.details.messages
+
+      for (let key in messages) {
+        for (let message of messages[key]) {
+          errors[key] = {
+            error: true,
+            message
+          }
         }
-      })
-    },
-    checkInputs () {
-      if (this.email !== '' && this.password !== '' && this.repeatPassword !== '') {
-        return false
       }
-      return true
+
+      this.$set(this, 'errors', errors)
     },
     reset () {
       this.emailError = false

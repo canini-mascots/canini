@@ -8,10 +8,16 @@
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 var fs = require('fs');
+const i18n = require('i18n');
 
 var app = module.exports = loopback();
 
 app.start = function() {
+  i18n.configure({
+    directory: `${__dirname}/../locales`
+  });
+  this.use(i18n.init);
+
   // start the web server
   return app.listen(function() {
     app.emit('started');

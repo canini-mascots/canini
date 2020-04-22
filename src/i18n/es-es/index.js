@@ -1,11 +1,15 @@
 export default {
+  somethingWentWrong: 'Algo salió mal',
+  internalServerError: 'Error interno del servidor',
+
   // Login
   enter: 'Entrar',
   email: 'Correo electrónico',
   password: 'Contraseña',
   remember: 'Recordarme',
-  wrongUserPass: 'Usuario o contraseña incorrectos',
   notRememberPassword: 'No recuerdo mi contraseña',
+  inputEmail: 'Introduce el correo',
+  inputPassword: 'Introduce la contraseña',
 
   // Erro404
   whereYouGoingCowboy: '¿Dónde vas vaquero?',
@@ -62,7 +66,7 @@ export default {
   repeatPassword: 'Repetir contraseña',
   repeatPasswordError: 'Las contraseñas no coinciden',
   passwordRequeriments: 'La contraseña debe tener 1 número, 1 mayuscula y un mínimo de 6 carácteres',
-  receiveOffers: 'Recibir ofertas y promociones por correo electrónico',
+  receiveOffers: 'Recibir ofertas por correo',
   userRegistered: 'Usuario registrado correctamente',
   invalidEmail: 'Email no válido',
   notUniqueEmail: 'Email no único',
@@ -72,6 +76,6 @@ export default {
   fillData: 'Rellena los datos',
   weSendEmail: 'Te enviaremos un correo para restablecer tu contraseña',
   send: 'Enviar',
-  returnToLogin: 'Volver al login',
+  return: 'Volver',
   newPassword: 'Introduce la nueva contraseña'
 }

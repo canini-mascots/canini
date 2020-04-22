@@ -1,0 +1,9 @@
+{
+  "login failed": "Login failed",
+  "is blank": "Cannot be blank",
+  "is invalid": "Invalid value",
+  "can't be blank": "Field cannot be blank",
+  "invalidData": "Invalid data",
+  "invalidEmail": "Invalid email",
+  "passwordRequeriments": "Password doesn't meet requirements"
+}
