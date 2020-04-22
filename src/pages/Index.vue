@@ -6,11 +6,9 @@
       transition-next="slide-left"
       animated
       swipeable
-      control-color="black"
+      control-color="white"
       navigation
       padding
-      arrows
-      height="400px"
       class="bg-grey-10 shadow-1"
     >
       <q-carousel-slide
@@ -19,7 +17,7 @@
         :img-src="slide.image"
         :name="slide.icon"
         class="column no-wrap">
-        <div class="q-mt-md text-h4 text-center">
+        <div class="slide-text q-mt-md text-h4 text-center">
           {{ $t(slide.text) }}
         </div>
       </q-carousel-slide>
@@ -52,6 +50,11 @@
   .my-card
     width 520px
     max-width 100%
+  .slide-text
+    text-shadow -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+    color white
+  .q-carousel
+    height 300px
 </style>
 
 <script>
