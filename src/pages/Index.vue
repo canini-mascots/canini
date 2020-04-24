@@ -18,18 +18,22 @@
         :name="slide.id"
         class="column no-wrap"
       >
-        <div
-          class="slide-text q-mt-md text-h4 text-center"
-        >{{ $te(slide.text)? $t(slide.text): slide.text }}</div>
+        <div class="slide-text q-mt-md text-h4 text-center">
+          {{ $te(slide.text) ? $t(slide.text) : slide.text }}
+        </div>
       </q-carousel-slide>
     </q-carousel>
     <div class="q-pa-md row justify-center q-gutter-md">
       <q-card class="my-card" v-for="offer in offers" :key="offer.id">
-        <q-img class="custom-image" ratio="1" position="50% 50%" :src="offer.image">
-          <div
-            class="text-h6 absolute-top text-center"
-            v-if="offer.text"
-          >{{$te(offer.text)? $t(offer.text): offer.text}}</div>
+        <q-img
+          class="custom-image"
+          ratio="1"
+          position="50% 50%"
+          :src="offer.image"
+        >
+          <div class="text-h6 absolute-top text-center" v-if="offer.text">
+            {{ $te(offer.text) ? $t(offer.text) : offer.text }}
+          </div>
         </q-img>
       </q-card>
     </div>
@@ -38,7 +42,7 @@
         fab
         icon="shopping_basket"
         color="accent"
-        :to="{name: 'catalog'}"
+        :to="{ name: 'catalog' }"
         :title="$t('startOrder')"
       />
     </q-page-sticky>
@@ -71,56 +75,56 @@
 
 <script>
 export default {
-  name: "PageIndex",
-  data() {
+  name: 'PageIndex',
+  data () {
     return {
-      slide: "banner-1",
+      slide: 'banner-1',
       slides: [
         {
-          image: "statics/carousel/banner-1.png",
-          id: "banner-1"
+          image: 'statics/carousel/banner-1.png',
+          id: 'banner-1'
         },
         {
-          image: "statics/carousel/banner-2.png",
-          id: "banner-2"
+          image: 'statics/carousel/banner-2.png',
+          id: 'banner-2'
         }
       ],
       offers: [
         {
-          id: "a",
-          image: "statics/resources/noticia-1.png",
+          id: 'a',
+          image: 'statics/resources/noticia-1.png',
           text: null
         },
         {
-          id: "b",
-          image: "statics/resources/kit.png",
-          text: "receiveWithKit"
+          id: 'b',
+          image: 'statics/resources/kit.png',
+          text: 'receiveWithKit'
         },
         {
-          id: "c",
-          image: "statics/resources/offers.png",
-          text: "tooManyOffers"
+          id: 'c',
+          image: 'statics/resources/offers.png',
+          text: 'tooManyOffers'
         },
         {
-          id: "d",
-          image: "statics/resources/concentration.png",
-          text: "concentrationGames"
+          id: 'd',
+          image: 'statics/resources/concentration.png',
+          text: 'concentrationGames'
         },
         {
-          id: "e",
-          image: "statics/resources/veggie.png",
-          text: "veggieMeat"
+          id: 'e',
+          image: 'statics/resources/veggie.png',
+          text: 'veggieMeat'
         }
       ]
-    };
+    }
   },
-  async mounted() {
-    let params = { params: { filter: { where: { type: "news" } } } };
-    let res = await this.$axios.get("Posts", params);
-    this.offers = this.offers.concat(res.data);
-    params = { params: { filter: { where: { type: "slider" } } } };
-    res = await this.$axios.get("Posts", params);
-    this.slides = this.slides.concat(res.data);
+  async mounted () {
+    let params = { filter: { where: { type: 'news' } } }
+    let res = await this.$axios.get('Posts', { params })
+    this.offers = this.offers.concat(res.data)
+    params = { filter: { where: { type: 'slider' } } }
+    res = await this.$axios.get('Posts', { params })
+    this.slides = this.slides.concat(res.data)
   }
-};
+}
 </script>

@@ -15,10 +15,6 @@ export default {
   whereYouGoingCowboy: '¿Dónde vas vaquero?',
   goBack: 'Volver',
 
-  // Erro404
-  whereYouGoingCowboy: '¿Dónde vas vaquero?',
-  goBack: 'Volver',
-
   // Layout
   login: 'Iniciar sesión',
   visitor: 'Visitante',

@@ -34,10 +34,6 @@ export default {
   whereYouGoingCowboy: 'Where are you going cowboy?',
   goBack: 'Go back',
 
-  // Erro404
-  whereYouGoingCowboy: 'Where are you going cowboy?',
-  goBack: 'Go back',
-
   // Layout
   login: 'Login',
   visitor: 'Visitor',
