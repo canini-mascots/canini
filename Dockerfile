@@ -27,7 +27,6 @@ COPY package.json package-lock.json ./
 RUN npm install
 
 COPY . ./
-RUN ls
 RUN npm run build
 
 #++++++++++++++++++++ Production image
