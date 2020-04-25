@@ -1,5 +1,0 @@
-apps:
-  - script: npm start
-    name: canini
-    instances: 1
-    max_restarts: 5

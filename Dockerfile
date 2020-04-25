@@ -15,8 +15,7 @@ RUN apt-get update \
         nodejs \
     && apt-get purge -y --auto-remove \
         gnupg2 \
-    && rm -rf /var/lib/apt/lists/* \
-    && npm -g install pm2
+    && rm -rf /var/lib/apt/lists/*
 
 #++++++++++++++++++++ Build frontend
 
@@ -46,7 +45,7 @@ COPY \
 COPY back .
 COPY --from=builder /build/dist/spa client/
 
-CMD ["pm2-runtime", "./process.yml"]
+CMD ["npm", "start"]
 
 HEALTHCHECK --interval=1m --timeout=10s \
     CMD curl -f http://localhost:3000/status || exit 1
