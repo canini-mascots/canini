@@ -43,7 +43,7 @@ COPY \
     README.md \
     ./
 COPY back .
-COPY --from=builder /build/dist/spa client/
+COPY --from=builder /build/dist/pwa client/
 
 CMD ["npm", "start"]
 
