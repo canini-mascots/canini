@@ -8,9 +8,11 @@
     "scripts": {
         "lint": "eslint .",
         "start": "node .",
-        "posttest": "npm run lint && npm audit"
+        "posttest": "npm run lint && npm audit",
+        "prestart": "node gcloud.js"
     },
     "dependencies": {
+        "@google-cloud/storage": "^4.7.0",
         "compression": "^1.0.3",
         "cors": "^2.5.2",
         "helmet": "^3.22.0",

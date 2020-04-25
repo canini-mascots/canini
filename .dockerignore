@@ -1,3 +1,6 @@
 node_modules
 back/node_modules
-src
+cloudbuild.yaml
+kubeconfig.yaml
+app.yaml
+Dockerfile

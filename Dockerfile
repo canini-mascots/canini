@@ -1,4 +1,6 @@
-FROM debian:buster-slim
+#++++++++++++++++++++ Base node image
+
+FROM debian:buster-slim AS node
 ENV TZ Europe/Madrid
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -16,16 +18,34 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && npm -g install pm2
 
+#++++++++++++++++++++ Build frontend
+
+FROM node AS builder
+
+WORKDIR /build
+COPY package.json package-lock.json ./
+RUN npm install
+
+COPY . ./
+RUN ls
+RUN npm run build
+
+#++++++++++++++++++++ Production image
+
+FROM node
+
 WORKDIR /canini
+ENV NODE_ENV production
+
 COPY back/package.json back/package-lock.json ./
-RUN npm install --only=prod
+RUN npm install
 
 COPY \
     LICENSE \
     README.md \
     ./
 COPY back .
-COPY dist/spa client
+COPY --from=builder /build/dist/spa client/
 
 CMD ["pm2-runtime", "./process.yml"]
 

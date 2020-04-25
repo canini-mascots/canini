@@ -1,4 +1,0 @@
-dispatch:
-  - url: canini.es/*
-    service: default
-
