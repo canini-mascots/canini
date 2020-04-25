@@ -39,16 +39,16 @@
     "dataSource": "db"
   },
   "Item": {
-      "dataSource": "vn"
+    "dataSource": "vn"
   },
   "ItemTag": {
-      "dataSource": "vn"
+    "dataSource": "vn"
   },
   "ItemType": {
-      "dataSource": "vn"
+    "dataSource": "vn"
   },
   "Tag": {
-      "dataSource": "vn"
+    "dataSource": "vn"
   },
   "Buy": {
     "dataSource": "vn"
@@ -66,9 +66,13 @@
   },
   "OrderRow": {
     "dataSource": "db",
-    "public": true    
+    "public": true
   },
   "Email": {
     "dataSource": "email"
+  },
+  "Post": {
+    "dataSource": "db",
+    "public": true
   }
 }

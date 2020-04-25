@@ -4,7 +4,7 @@
   "idInjection": true,
   "options": {
     "mysql": {
-        "table": "order"
+      "table": "order"
     }
   },
   "properties": {
@@ -14,10 +14,10 @@
       "generated": true
     },
     "price": {
-        "type": "Number"
+      "type": "Number"
     },
     "date": {
-        "type": "Date"
+      "type": "Date"
     }
   },
   "validations": [],
