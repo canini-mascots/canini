@@ -1,110 +1,113 @@
 {
-    "name": "Item",
-	"base": "PersistedModel",
-    "options": {
-        "mysql": {
-          "table": "item"
-        }
-    },
-    "properties": {
-        "id": {
-            "type": "Number",
-            "id": true,
-            "description": "Identifier"
-        },
-        "name": {
-            "type": "String"
-        },
-        "size": {
-            "type": "Number"
-        },
-        "category": {
-            "type": "String"
-        },
-        "typeFk": {
-            "type": "Number",
-            "required": true
-        },
-        "stems": {
-            "type": "Number"
-        },
-        "description": {
-            "type": "String"
-        },
-        "isOnOffer": {
-            "type": "Boolean"
-        },
-        "isBargain": {
-            "type": "Boolean"
-        },
-        "isActive": {
-            "type": "Boolean"
-        },
-        "comment": {
-            "type": "String"
-        },
-        "relevancy": {
-            "type": "Number"
-        },
-        "density": {
-            "type": "Number"
-        },
-        "image": {
-            "type": "String"
-        },
-        "longName": {
-            "type": "String"
-        },
-        "subName": {
-            "type": "String"
-        },
-        "tag5": {
-            "type": "String"
-        },
-        "value5": {
-            "type": "String"
-        },
-        "tag6": {
-            "type": "String"
-        },
-        "value6": {
-            "type": "String"
-        },
-        "tag7": {
-            "type": "String"
-        },
-        "value7": {
-            "type": "String"
-        },
-        "tag8": {
-            "type": "String"
-        },
-        "value8": {
-            "type": "String"
-        },
-        "tag9": {
-            "type": "String"
-        },
-        "value9": {
-            "type": "String"
-        },
-        "tag10": {
-            "type": "String"
-        },
-        "value10": {
-            "type": "String"
-        }
-    },
-    "relations": {
-      "itemType": {
-        "type": "belongsTo",
-        "model": "ItemType",
-        "foreignKey": "typeFk"
-      },
-      "tags": {
-        "type": "hasMany",
-        "model": "ItemTag",
-        "foreignKey": "itemFk"
-      }
+  "name": "Item",
+  "base": "PersistedModel",
+  "options": {
+    "mysql": {
+      "table": "item"
     }
-  }
+  },
+  "properties": {
+    "id": {
+      "type": "Number",
+      "id": true,
+      "description": "Identifier"
+    },
+    "name": {
+      "type": "String"
+    },
+    "size": {
+      "type": "Number"
+    },
+    "category": {
+      "type": "String"
+    },
+    "typeFk": {
+      "type": "Number",
+      "required": true
+    },
+    "stems": {
+      "type": "Number"
+    },
+    "description": {
+      "type": "String"
+    },
+    "isOnOffer": {
+      "type": "Boolean"
+    },
+    "isBargain": {
+      "type": "Boolean"
+    },
+    "isActive": {
+      "type": "Boolean"
+    },
+    "comment": {
+      "type": "String"
+    },
+    "relevancy": {
+      "type": "Number"
+    },
+    "density": {
+      "type": "Number"
+    },
+    "image": {
+      "type": "String"
+    },
+    "longName": {
+      "type": "String"
+    },
+    "subName": {
+      "type": "String"
+    },
+    "tag5": {
+      "type": "String"
+    },
+    "value5": {
+      "type": "String"
+    },
+    "tag6": {
+      "type": "String"
+    },
+    "value6": {
+      "type": "String"
+    },
+    "tag7": {
+      "type": "String"
+    },
+    "value7": {
+      "type": "String"
+    },
+    "tag8": {
+      "type": "String"
+    },
+    "value8": {
+      "type": "String"
+    },
+    "tag9": {
+      "type": "String"
+    },
+    "value9": {
+      "type": "String"
+    },
+    "tag10": {
+      "type": "String"
+    },
+    "value10": {
+      "type": "String"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "itemType": {
+      "type": "belongsTo",
+      "model": "ItemType",
+      "foreignKey": "typeFk"
+    },
+    "tags": {
+      "type": "hasMany",
+      "model": "ItemTag",
+      "foreignKey": "itemFk"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

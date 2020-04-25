@@ -6,32 +6,33 @@
       transition-next="slide-left"
       animated
       swipeable
-      control-color="black"
+      control-color="white"
       navigation
       padding
-      arrows
-      height="400px"
       class="bg-grey-10 shadow-1"
     >
       <q-carousel-slide
         v-for="slide in slides"
-        :key="slide.icon"
+        :key="slide.id"
         :img-src="slide.image"
-        :name="slide.icon"
-        class="column no-wrap">
-        <div class="q-mt-md text-h4 text-center">
-          {{ $t(slide.text) }}
+        :name="slide.id"
+        class="column no-wrap"
+      >
+        <div class="slide-text q-mt-md text-h4 text-center">
+          {{ $te(slide.text) ? $t(slide.text) : slide.text }}
         </div>
       </q-carousel-slide>
     </q-carousel>
     <div class="q-pa-md row justify-center q-gutter-md">
-      <q-card
-        class="my-card"
-        v-for="offer in offers"
-        :key="offer.id">
-        <q-img :src="offer.image">
-          <div class="text-h6 absolute-top text-center">
-            {{$t(offer.description)}}
+      <q-card class="my-card" v-for="offer in offers" :key="offer.id">
+        <q-img
+          class="custom-image"
+          ratio="1"
+          position="50% 50%"
+          :src="offer.image"
+        >
+          <div class="text-h6 absolute-top text-center" v-if="offer.text">
+            {{ $te(offer.text) ? $t(offer.text) : offer.text }}
           </div>
         </q-img>
       </q-card>
@@ -41,7 +42,7 @@
         fab
         icon="shopping_basket"
         color="accent"
-        :to="{name: 'catalog'}"
+        :to="{ name: 'catalog' }"
         :title="$t('startOrder')"
       />
     </q-page-sticky>
@@ -49,9 +50,27 @@
 </template>
 
 <style lang="stylus" scoped>
-  .my-card
-    width 520px
-    max-width 100%
+.my-card {
+  width: 600px;
+  max-width: 600px;
+}
+
+@media (max-width: 633px) {
+  .q-carousel__slide {
+    background-repeat: no-repeat;
+    background-origin: inherit;
+    background-size: 300% 100%;
+  }
+
+  .q-carousel {
+    height: 63.2vw !important;
+  }
+}
+
+.slide-text {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: white;
+}
 </style>
 
 <script>
@@ -59,38 +78,53 @@ export default {
   name: 'PageIndex',
   data () {
     return {
-      slide: 'style',
+      slide: 'banner-1',
       slides: [
         {
-          image: 'statics/carousel/recommended.png',
-          text: 'recommendedByPets',
-          icon: 'style'
-        }, {
-          image: 'statics/carousel/party.png',
-          text: 'joinParty',
-          icon: 'live_tv'
+          image: 'statics/carousel/banner-1.png',
+          id: 'banner-1'
+        },
+        {
+          image: 'statics/carousel/banner-2.png',
+          id: 'banner-2'
         }
       ],
       offers: [
         {
-          id: 1,
+          id: 'a',
+          image: 'statics/resources/noticia-1.png',
+          text: null
+        },
+        {
+          id: 'b',
           image: 'statics/resources/kit.png',
-          description: 'receiveWithKit'
-        }, {
-          id: 2,
+          text: 'receiveWithKit'
+        },
+        {
+          id: 'c',
           image: 'statics/resources/offers.png',
-          description: 'tooManyOffers'
-        }, {
-          id: 3,
+          text: 'tooManyOffers'
+        },
+        {
+          id: 'd',
           image: 'statics/resources/concentration.png',
-          description: 'concentrationGames'
-        }, {
-          id: 4,
+          text: 'concentrationGames'
+        },
+        {
+          id: 'e',
           image: 'statics/resources/veggie.png',
-          description: 'veggieMeat'
+          text: 'veggieMeat'
         }
       ]
     }
+  },
+  async mounted () {
+    let params = { filter: { where: { type: 'news' } } }
+    let res = await this.$axios.get('Posts', { params })
+    this.offers = this.offers.concat(res.data)
+    params = { filter: { where: { type: 'slider' } } }
+    res = await this.$axios.get('Posts', { params })
+    this.slides = this.slides.concat(res.data)
   }
 }
 </script>

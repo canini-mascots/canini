@@ -1,49 +1,51 @@
 {
-    "name": "OrderRow",
-    "base": "PersistedModel",
-    "options": {
-        "mysql": {
-            "table": "orderRow"
-        }
+  "name": "OrderRow",
+  "base": "PersistedModel",
+  "options": {
+    "mysql": {
+      "table": "orderRow"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "Number",
+      "id": true,
+      "generated": true
     },
-    "properties": {
-        "id": {
-            "type": "Number",
-            "id": true,
-            "generated": true
-          },
-        "orderId": {
-            "type": "Number",
-            "required": true
-        },
-        "buyId": {
-            "type": "Number",
-            "required": true
-        },
-        "price": {
-            "type": "Number",
-            "required": true
-        },
-        "quantity": {
-            "type": "Number",
-            "required": true
-        },
-        "concept": {
-            "type": "String",
-            "required": true
-        }
+    "orderId": {
+      "type": "Number",
+      "required": true
     },
-    "relations": {
-        "order": {
-            "type": "belongsTo",
-            "model": "Order",
-            "foreignKey": "orderId"
-        },
-        "Buy": {
-            "type": "belongsTo",
-            "model": "Buy",
-            "foreignKey": "buyId"
-        }
+    "buyId": {
+      "type": "Number",
+      "required": true
     },
-    "acls": []
+    "price": {
+      "type": "Number",
+      "required": true
+    },
+    "quantity": {
+      "type": "Number",
+      "required": true
+    },
+    "concept": {
+      "type": "String",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "order": {
+      "type": "belongsTo",
+      "model": "Order",
+      "foreignKey": "orderId"
+    },
+    "Buy": {
+      "type": "belongsTo",
+      "model": "Buy",
+      "foreignKey": "buyId"
+    }
+  },
+  "acls": [],
+  "methods": {}
 }

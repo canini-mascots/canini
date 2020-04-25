@@ -13,7 +13,9 @@
     },
     "helmet#xssFilter": {},
     "helmet#frameguard": {
-      "params": { "action": "deny" }
+      "params": {
+        "action": "deny"
+      }
     },
     "helmet#hsts": {
       "params": {
@@ -32,7 +34,11 @@
   "auth": {},
   "parse": {
     "body-parser#json": {},
-    "body-parser#urlencoded": {"params": { "extended": true }}
+    "body-parser#urlencoded": {
+      "params": {
+        "extended": true
+      }
+    }
   },
   "routes": {
     "loopback#rest": {
@@ -43,13 +49,18 @@
   },
   "files": {
     "loopback#static": {
-      "params": "$!../client" 
+      "params": "$!../client"
     }
   },
   "final": {
     "loopback#urlNotFound": {}
   },
   "final:after": {
-    "strong-error-handler": {}
+    "./middleware/error-handler": {},
+    "strong-error-handler": {
+      "params": {
+        "log": false
+      }
+    }
   }
 }
