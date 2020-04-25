@@ -115,7 +115,7 @@ module.exports = function (ctx) {
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
-        theme_color: '#d74b94',
+        theme_color: '#343434',
         icons: [
           {
             'src': 'statics/icons/icon-128x128.png',
