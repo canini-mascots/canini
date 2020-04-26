@@ -7,6 +7,7 @@ if (!env || env === 'development') {
 
 const fs = require('fs');
 const confFiles = [
+  'datasources.json',
   'datasources.local.json',
   'config.local.json',
 ];
