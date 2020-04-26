@@ -6,7 +6,6 @@ if (!env || env === 'development') {
 }
 
 const fs = require('fs');
-const confDir = 'server';
 const confFiles = [
   'datasources.local.json',
   'config.local.json',
@@ -14,7 +13,7 @@ const confFiles = [
 
 const downloadFiles = [];
 for (let file of confFiles) {
-  if (!fs.existsSync(`${confDir}/${file}`)) {
+  if (!fs.existsSync(`server/${file}`)) {
     downloadFiles.push(file);
   }
 }
@@ -33,7 +32,7 @@ for (let file of confFiles) {
   tasks.push(storage
     .bucket(bucketName)
     .file(file)
-    .download({destination: `${confDir}/${file}`}));
+    .download({destination: `/tmp/canini/${file}`}));
 }
 
 Promise.all(tasks)

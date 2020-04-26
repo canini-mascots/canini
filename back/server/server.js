@@ -33,7 +33,7 @@ app.start = function() {
 
 let options = {appRootDir: __dirname};
 
-let dsRootDir = `/etc/canini`;
+let dsRootDir = `/tmp/canini`;
 if (fs.existsSync(dsRootDir))
   options.dsRootDir = dsRootDir;
 
