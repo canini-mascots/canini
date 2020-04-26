@@ -4,4 +4,7 @@ steps:
 - name: 'gcr.io/cloud-builders/npm:node-10.10.0'
   args: ['run', 'build']
 - name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args: ['-c', 'mv dist/pwa/* back/client']
+- name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy']
