@@ -26,13 +26,16 @@ const gcs = require('@google-cloud/storage');
 const bucketName = 'datasources.canini.es';
 const storage = new gcs.Storage();
 
+const confDir = '/tmp/canini';
+fs.mkdirSync(confDir);
+
 const tasks = [];
 for (let file of confFiles) {
   console.log(`Downloading '${file}' from bucket '${bucketName}.'`);
   tasks.push(storage
     .bucket(bucketName)
     .file(file)
-    .download({destination: `/tmp/canini/${file}`}));
+    .download({destination: `${confDir}/${file}`}));
 }
 
 Promise.all(tasks)
