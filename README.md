@@ -4,14 +4,19 @@ Source code of Canini website.
 
 ## Getting Started
 
-Launch application for development.
+Launch frontend for development.
 ```
 $ quasar dev
 ```
 
+Start backend.
+```
+$ npm run back
+```
+
 Build as Progressive Web App 
 ```
-$ quasar build -m pwa
+$ quasar build --mode pwa
 ```
 
 ## Built With
