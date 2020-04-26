@@ -17,8 +17,3 @@ cloudbuild.yaml
 
 # Node.js dependencies:
 node_modules/
-
-*.*
-!back
-!LICENSE
-!README.md
