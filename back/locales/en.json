@@ -5,5 +5,7 @@
   "can't be blank": "Field cannot be blank",
   "invalidData": "Invalid data",
   "invalidEmail": "Invalid email",
-  "passwordRequeriments": "Password doesn't meet requirements"
+  "passwordEmpty": "Password cannot be empty",
+  "passwordRequeriments": "Password doesn't meet requirements",
+  "notUniqueEmail": "User already exists"
 }
