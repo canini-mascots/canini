@@ -48,9 +48,9 @@
         <img src="statics/logo.svg" alt="Canini" class="logo q-my-md q-mx-md"/>
         <div class="text-subtitle1">
           <div
-            v-if="this.$store.state.customer.email"
+            v-if="$store.state.customer.email"
             class="row items-center full-width justify-between">
-            <span>{{checkUser()}}</span>
+            <span>{{$store.state.customer.email}}</span>
             <q-btn
               icon="exit_to_app"
               to="/login"
@@ -171,21 +171,13 @@ export default {
   },
   methods: {
     openURL,
-    checkUser: function () {
-      if (this.$store.state.customer.email) {
-        return this.$store.state.customer.email
-      } else {
-        return this.$t('visitor')
-      }
-    },
     logout: function () {
-      let params = {
+      this.$axios.post('Customers/logout', {
         access_token: this.$store.state.customer.token
-      }
+      })
       this.setCustomer()
-      this.$axios.post('customers/logout', params)
     },
-    ...mapMutations('customer', ['setToken', 'setEmail', 'setCustomer'])
+    ...mapMutations('customer', ['setCustomer'])
   }
 }
 </script>

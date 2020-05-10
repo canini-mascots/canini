@@ -8,7 +8,7 @@
       />
     </q-card-section>
     <q-card-section>
-      <q-form @submit="onRegister" class="q-gutter-y-md">
+      <q-form @submit="onRegister" ref="form" class="q-gutter-y-md">
         <div class="text-grey-8 text-h5 text-center">
           {{$t('fillData')}}
         </div>
@@ -16,17 +16,15 @@
           <q-input
             v-model="email"
             :label="$t('email')"
-            :error="errors.email.error"
-            :error-message="errors.email.message"
+            :rules="[() => errs.email]"
+            @input="errs.email = null"
             hint=""
             filled
-            />
+          />
           <q-input
             v-model="password"
             :label="$t('password')"
             :type="showPwd ? 'password' : 'text'"
-            :error="errors.password.error"
-            :error-message="errors.password.message"
             hint=""
             filled>
             <template v-slot:append>
@@ -79,12 +77,15 @@
 
 <style lang="stylus" scoped>
   #image
-    height 150px
+    height 250px
 </style>
 
 <script>
+import Form from '../components/Form.js'
+
 export default {
   name: 'Register',
+  mixins: [Form],
   data () {
     return {
       email: '',
@@ -92,16 +93,11 @@ export default {
       repeatPassword: '',
       receiveOffers: false,
       showPwd: true,
-      showRpPwd: true,
-      errors: {
-        email: {},
-        password: {}
-      }
+      showRpPwd: true
     }
   },
   methods: {
     async onRegister () {
-      this.reset()
       try {
         await this.$axios.post('Customers', {
           email: this.email,
@@ -113,31 +109,8 @@ export default {
         })
         this.$router.push('/home')
       } catch (err) {
-        this.checkErrors(err)
-        throw err
+        this.checkErrors(err, this.$refs.form)
       }
-    },
-    checkErrors (err) {
-      const isValidationError = err.response && err.response.status === 422
-      if (!isValidationError) return
-
-      const errors = {}
-      const messages = err.response.data.error.details.messages
-
-      for (let key in messages) {
-        for (let message of messages[key]) {
-          errors[key] = {
-            error: true,
-            message
-          }
-        }
-      }
-
-      this.$set(this, 'errors', errors)
-    },
-    reset () {
-      this.emailError = false
-      this.pwdError = false
     }
   }
 }

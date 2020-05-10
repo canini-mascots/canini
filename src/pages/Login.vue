@@ -2,7 +2,11 @@
   <div>
     <q-card-section>
       <router-link to="/">
-        <img src="statics/logo.svg" alt="Canini" />
+        <img
+          src="statics/logo.svg"
+          alt="Canini"
+          class="block"
+        />
       </router-link>
     </q-card-section>
     <q-card-section>
